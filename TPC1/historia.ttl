@@ -1,0 +1,286 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/historia#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://rpcw.di.uminho.pt/2026/historia> .
+
+<http://rpcw.di.uminho.pt/2026/historia> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/historia#amigoDe
+:amigoDe rdf:type owl:ObjectProperty ,
+                  owl:SymmetricProperty ;
+         rdfs:domain :Pessoa ;
+         rdfs:range :Pessoa .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#aprendeLingua
+:aprendeLingua rdf:type owl:ObjectProperty ;
+               rdfs:domain :Pessoa ;
+               rdfs:range :Lingua .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#apresentou
+:apresentou rdf:type owl:ObjectProperty ;
+            rdfs:domain :Pessoa ;
+            rdfs:range :Pessoa .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#docenteDe
+:docenteDe rdf:type owl:ObjectProperty ;
+           rdfs:domain :Professor ;
+           rdfs:range :Escola .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#estudaEm
+:estudaEm rdf:type owl:ObjectProperty ;
+          rdfs:domain :Pessoa ;
+          rdfs:range :Universidade .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#falaLingua
+:falaLingua rdf:type owl:ObjectProperty ;
+            rdfs:domain :Pessoa ;
+            rdfs:range :Lingua .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#frequenta
+:frequenta rdf:type owl:ObjectProperty ;
+           rdfs:domain :Pessoa ;
+           rdfs:range :Curso .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#lecionadoEm
+:lecionadoEm rdf:type owl:ObjectProperty ;
+             rdfs:domain :Curso ;
+             rdfs:range :CentroLinguas .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#leciona
+:leciona rdf:type owl:ObjectProperty ;
+         rdfs:domain :Professor ;
+         rdfs:range :Curso .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#localizadoEm
+:localizadoEm rdf:type owl:ObjectProperty ;
+              rdfs:domain :CentroLinguas ;
+              rdfs:range :Universidade .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#oriundoDe
+:oriundoDe rdf:type owl:ObjectProperty ;
+           rdfs:domain :Pessoa ;
+           rdfs:range :Cidade .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#parceiroLinguisticoDe
+:parceiroLinguisticoDe rdf:type owl:ObjectProperty ,
+                                owl:SymmetricProperty ;
+                       rdfs:domain :Pessoa ;
+                       rdfs:range :Pessoa .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#pertenceA
+:pertenceA rdf:type owl:ObjectProperty ;
+           rdfs:domain :Escola ;
+           rdfs:range :Universidade .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/historia#nome
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Pessoa ;
+      rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#temIdade
+:temIdade rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Pessoa ;
+          rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#nacionalidade
+:nacionalidade rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Pessoa ;
+               rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#diaDaSemana
+:diaDaSemana rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Curso ;
+             rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/historia#Pessoa
+:Pessoa rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Estudante
+:Estudante rdf:type owl:Class ;
+           rdfs:subClassOf :Pessoa .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Professor
+:Professor rdf:type owl:Class ;
+           rdfs:subClassOf :Pessoa .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Universidade
+:Universidade rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Escola
+:Escola rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#CentroLinguas
+:CentroLinguas rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Curso
+:Curso rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Lingua
+:Lingua rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Cidade
+:Cidade rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/historia#Portugues
+:Portugues rdf:type owl:NamedIndividual ,
+                    :Lingua .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Espanhol
+:Espanhol rdf:type owl:NamedIndividual ,
+                   :Lingua .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Ingles
+:Ingles rdf:type owl:NamedIndividual ,
+                 :Lingua .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Alemao
+:Alemao rdf:type owl:NamedIndividual ,
+                 :Lingua .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Porto
+:Porto rdf:type owl:NamedIndividual ,
+                :Cidade .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Universidade_do_Minho
+:Universidade_do_Minho rdf:type owl:NamedIndividual ,
+                                :Universidade .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Escola_de_Letras_Artes_e_Ciencias_Humanas
+:Escola_de_Letras_Artes_e_Ciencias_Humanas rdf:type owl:NamedIndividual ,
+                                                    :Escola ;
+                                           :pertenceA :Universidade_do_Minho .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Centro_de_Linguas
+:Centro_de_Linguas rdf:type owl:NamedIndividual ,
+                            :CentroLinguas ;
+                   :localizadoEm :Universidade_do_Minho .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#CursoAlemao
+:CursoAlemao rdf:type owl:NamedIndividual ,
+                      :Curso ;
+             :lecionadoEm :Centro_de_Linguas ;
+             :diaDaSemana "Sexta-feira" .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#CursoBiotecnologia
+:CursoBiotecnologia rdf:type owl:NamedIndividual ,
+                             :Curso .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Eduardo
+:Eduardo rdf:type owl:NamedIndividual ,
+                  :Estudante ;
+         :falaLingua :Portugues ,
+                     :Espanhol ,
+                     :Ingles ;
+         :aprendeLingua :Alemao ;
+         :estudaEm :Universidade_do_Minho ;
+         :frequenta :CursoAlemao ;
+         :oriundoDe :Porto ;
+         :amigoDe :Carlos ,
+                  :Ana ;
+         :parceiroLinguisticoDe :Hanna ;
+         :nome "Eduardo" ;
+         :temIdade 21 ;
+         :nacionalidade "Portuguesa" .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Carlos
+:Carlos rdf:type owl:NamedIndividual ,
+                 :Estudante ;
+        :aprendeLingua :Alemao ;
+        :estudaEm :Universidade_do_Minho ;
+        :frequenta :CursoAlemao ;
+        :amigoDe :Eduardo ,
+                 :Ana ;
+        :nome "Carlos" .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Ana
+:Ana rdf:type owl:NamedIndividual ,
+              :Estudante ;
+     :aprendeLingua :Alemao ;
+     :estudaEm :Universidade_do_Minho ;
+     :frequenta :CursoAlemao ;
+     :amigoDe :Eduardo ,
+              :Carlos ;
+     :nome "Ana" .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#HelmutRatz
+:HelmutRatz rdf:type owl:NamedIndividual ,
+                     :Professor ;
+            :falaLingua :Alemao ;
+            :leciona :CursoAlemao ;
+            :docenteDe :Escola_de_Letras_Artes_e_Ciencias_Humanas ;
+            :apresentou :Hanna ;
+            :nome "Helmut Ratz" ;
+            :nacionalidade "Alemã" .
+
+
+###  http://rpcw.di.uminho.pt/2026/historia#Hanna
+:Hanna rdf:type owl:NamedIndividual ,
+                :Estudante ;
+       :falaLingua :Alemao ;
+       :aprendeLingua :Portugues ;
+       :estudaEm :Universidade_do_Minho ;
+       :frequenta :CursoBiotecnologia ;
+       :parceiroLinguisticoDe :Eduardo ;
+       :nome "Hanna" ;
+       :nacionalidade "Alemã" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
