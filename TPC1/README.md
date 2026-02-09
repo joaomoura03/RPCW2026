@@ -2,6 +2,7 @@
 
 ## Metainformação
 - **Título:** TPC1 - Ontologia da História
+- **Data:** 09/02/2026
 - **Autor:**
   - **Id:** PG60273
   - **Nome:** João Miguel Mendes Moura
