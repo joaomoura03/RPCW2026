@@ -1,0 +1,6 @@
+1. Criar o repositório
+2. Carregar a ontologia, resolvendo problemas se existirem
+3. Quem foram os clientes?
+4. Que pratos serve o restaurante?
+5. Quais os ingredientes necessário à confessão dos pratos?
+6. Há funcionários que sejam também clientes?
