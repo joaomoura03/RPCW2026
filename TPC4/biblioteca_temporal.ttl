@@ -1,0 +1,1190 @@
+@prefix : <http://www.semanticweb.org/joaomoura03/ontologies/2026/bibliotecatemporal/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/joaomoura03/ontologies/2026/bibliotecatemporal> a owl:Ontology .
+
+:Arnaldo a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Central_do_Tempo .
+
+:Aurelio a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Cofre_do_Tempo_Perdido .
+
+:Boecio a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Infinita .
+
+:Cassiodoro a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Infinita .
+
+:Clarice a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Arquivo_do_Vazio_Temporal .
+
+:Cronos a :Autor,
+        :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Entre_Ontem_e_Amanha .
+
+:Dante_B a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Central_do_Tempo .
+
+:Emprestimo a owl:Class .
+
+:EntidadeTemporal a owl:Class ;
+    rdfs:subClassOf :Agente .
+
+:Eustachio a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Arquivo_do_Vazio_Temporal .
+
+:Hypatia_II a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Torre_do_Conhecimento .
+
+:Leitor_1 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_10 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_11 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_12 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_13 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_14 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_15 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_2 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_3 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_4 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_5 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_6 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_7 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_8 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_9 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_1 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_10 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_11 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_12 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_13 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_14 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_2 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_3 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_4 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_5 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_6 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_7 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_8 a :Leitor,
+        owl:NamedIndividual .
+
+:Leitor_Vip_9 a :Leitor,
+        owl:NamedIndividual .
+
+:Linha_T0 a :LinhaOriginal,
+        owl:NamedIndividual .
+
+:Linha_T1 a :LinhaAlternativa,
+        owl:NamedIndividual .
+
+:Livro_001 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Omega,
+        :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Queda_do_Muro ;
+    :saoEscritosPor :Autor_10 .
+
+:Livro_002 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Queda_do_Muro ;
+    :saoEscritosPor :Autor_4 .
+
+:Livro_003 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Nascimento_da_IA ;
+    :saoEscritosPor :Autor_4 .
+
+:Livro_004 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Descobrimento_da_America ;
+    :saoEscritosPor :Autor_5 .
+
+:Livro_005 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_10 .
+
+:Livro_006 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_007 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_00 ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Queda_do_Muro ;
+    :saoEscritosPor :Autor_5 .
+
+:Livro_008 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Extincao_da_Fome ;
+    :saoEscritosPor :Autor_4 .
+
+:Livro_009 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva,
+        :Linha_Original_Prime ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_010 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Nascimento_da_IA ;
+    :saoEscritosPor :Autor_10 .
+
+:Livro_011 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Revolucao_Industrial ;
+    :saoEscritosPor :Autor_6 .
+
+:Livro_012 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_013 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva,
+        :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_014 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Omega,
+        :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Crise_de_1929 ;
+    :saoEscritosPor :Autor_3 .
+
+:Livro_015 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_00 ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Queda_do_Muro ;
+    :saoEscritosPor :Autor_10 .
+
+:Livro_016 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva,
+        :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_017 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_7 .
+
+:Livro_018 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Crise_de_1929 ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_019 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_1 .
+
+:Livro_020 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Nascimento_da_IA ;
+    :saoEscritosPor :Autor_5 .
+
+:Livro_021 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Revolucao_Industrial ;
+    :saoEscritosPor :Autor_7 .
+
+:Livro_022 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Nascimento_da_IA ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_023 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_Prime ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_8 .
+
+:Livro_024 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Revolucao_Industrial ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_025 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Omega,
+        :Linha_Original_Prime ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Revolucao_Industrial ;
+    :saoEscritosPor :Autor_5 .
+
+:Livro_026 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Descobrimento_da_America ;
+    :saoEscritosPor :Autor_5 .
+
+:Livro_027 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Queda_do_Muro ;
+    :saoEscritosPor :Autor_6 .
+
+:Livro_028 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Queda_do_Muro ;
+    :saoEscritosPor :Autor_4 .
+
+:Livro_029 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_7 .
+
+:Livro_030 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Omega ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Contato_Sirius ;
+    :saoEscritosPor :Autor_1 .
+
+:Livro_031 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Omega,
+        :Linha_Original_00 ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Crise_de_1929 ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_032 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Revolucao_Industrial ;
+    :saoEscritosPor :Autor_8 .
+
+:Livro_033 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_034 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_00 ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Crise_de_1929 ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_035 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_00 ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Crise_de_1929 ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_036 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva,
+        :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_7 .
+
+:Livro_037 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Extincao_da_Fome ;
+    :saoEscritosPor :Autor_6 .
+
+:Livro_038 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Explosao_Solar_2100 ;
+    :saoEscritosPor :Autor_3 .
+
+:Livro_039 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Extincao_da_Fome ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_040 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_3 .
+
+:Livro_041 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Descobrimento_da_America ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_042 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Crise_de_1929 ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_043 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Omega,
+        :Linha_Original_Prime ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Contato_Sirius ;
+    :saoEscritosPor :Autor_1 .
+
+:Livro_044 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_7 .
+
+:Livro_045 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Revolucao_Industrial ;
+    :saoEscritosPor :Autor_8 .
+
+:Livro_046 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Contato_Sirius ;
+    :saoEscritosPor :Autor_6 .
+
+:Livro_047 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Descobrimento_da_America ;
+    :saoEscritosPor :Autor_1 .
+
+:Livro_048 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Recursiva,
+        :Linha_Original_00 ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Extincao_da_Fome ;
+    :saoEscritosPor :Autor_4 .
+
+:Livro_049 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Extincao_da_Fome ;
+    :saoEscritosPor :Autor_7 .
+
+:Livro_050 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_00 ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Descobrimento_da_America ;
+    :saoEscritosPor :Autor_9 .
+
+:Livro_051 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Original_Prime ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Primeiro_Voo ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_052 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_A,
+        :Linha_Original_00 ;
+    :pertecemA :Arquivo_do_Vazio_Temporal ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_3 .
+
+:Livro_053 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alt_Omega ;
+    :pertecemA :Biblioteca_Central_do_Tempo ;
+    :refereEvento :Guerra_dos_Nanobots ;
+    :saoEscritosPor :Autor_2 .
+
+:Livro_Temporal_001 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Pax_Romana ;
+    :saoEscritosPor :Autor_F .
+
+:Livro_Temporal_002 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Nascimento_do_Sol ;
+    :saoEscritosPor :Autor_D .
+
+:Livro_Temporal_003 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Renascimento ;
+    :saoEscritosPor :Autor_I .
+
+:Livro_Temporal_004 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Crise_das_Tulipas ;
+    :saoEscritosPor :Autor_H .
+
+:Livro_Temporal_005 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Gama_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Exploracao_Espacial ;
+    :saoEscritosPor :Autor_A .
+
+:Livro_Temporal_006 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Extincao_Dino ;
+    :saoEscritosPor :Autor_J .
+
+:Livro_Temporal_007 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Nascimento_do_Sol ;
+    :saoEscritosPor :Autor_F .
+
+:Livro_Temporal_008 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Epsilon_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Nascimento_do_Sol ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_009 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Epsilon_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_J .
+
+:Livro_Temporal_010 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Epsilon_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_011 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Extincao_Dino ;
+    :saoEscritosPor :Autor_A .
+
+:Livro_Temporal_012 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Nascimento_do_Sol ;
+    :saoEscritosPor :Autor_J .
+
+:Livro_Temporal_013 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Pax_Romana ;
+    :saoEscritosPor :Autor_J .
+
+:Livro_Temporal_014 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Extincao_Dino ;
+    :saoEscritosPor :Autor_G .
+
+:Livro_Temporal_015 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Gama_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Fim_da_Escassez ;
+    :saoEscritosPor :Autor_A .
+
+:Livro_Temporal_016 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Gama_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_017 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Gama_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Cura_da_Mortalidade ;
+    :saoEscritosPor :Autor_B .
+
+:Livro_Temporal_018 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_F .
+
+:Livro_Temporal_019 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Epsilon_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Cura_da_Mortalidade ;
+    :saoEscritosPor :Autor_H .
+
+:Livro_Temporal_020 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Exploracao_Espacial ;
+    :saoEscritosPor :Autor_D .
+
+:Livro_Temporal_021 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Delta_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Fim_da_Escassez ;
+    :saoEscritosPor :Autor_D .
+
+:Livro_Temporal_022 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Nascimento_do_Sol ;
+    :saoEscritosPor :Autor_D .
+
+:Livro_Temporal_023 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Extincao_Dino ;
+    :saoEscritosPor :Autor_A .
+
+:Livro_Temporal_024 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Renascimento ;
+    :saoEscritosPor :Autor_A .
+
+:Livro_Temporal_025 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Crise_das_Tulipas ;
+    :saoEscritosPor :Autor_G .
+
+:Livro_Temporal_026 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Gama_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Extincao_Dino ;
+    :saoEscritosPor :Autor_C .
+
+:Livro_Temporal_027 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Crise_das_Tulipas ;
+    :saoEscritosPor :Autor_F .
+
+:Livro_Temporal_028 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Crise_das_Tulipas ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_029 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Pax_Romana ;
+    :saoEscritosPor :Autor_F .
+
+:Livro_Temporal_030 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Gama_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_A .
+
+:Livro_Temporal_031 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Pax_Romana ;
+    :saoEscritosPor :Autor_I .
+
+:Livro_Temporal_032 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0 ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Crise_das_Tulipas ;
+    :saoEscritosPor :Autor_F .
+
+:Livro_Temporal_033 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Delta_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Primeira_Cidade_Submarina ;
+    :saoEscritosPor :Autor_I .
+
+:Livro_Temporal_034 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Delta_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Fim_da_Escassez ;
+    :saoEscritosPor :Autor_H .
+
+:Livro_Temporal_035 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Delta_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_B .
+
+:Livro_Temporal_036 a :LivroHistorico,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0 ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Nascimento_do_Sol ;
+    :saoEscritosPor :Autor_I .
+
+:Livro_Temporal_037 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Extincao_Dino ;
+    :saoEscritosPor :Autor_B .
+
+:Livro_Temporal_038 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Exploracao_Espacial ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_039 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Epsilon_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Primeira_Cidade_Submarina ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_040 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Gama_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Nascimento_do_Sol ;
+    :saoEscritosPor :Autor_A .
+
+:Livro_Temporal_041 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Epsilon_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Cura_da_Mortalidade ;
+    :saoEscritosPor :Autor_C .
+
+:Livro_Temporal_042 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Epsilon_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Dominio_da_Energia_Livre ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_043 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Epsilon_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_C .
+
+:Livro_Temporal_044 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Gama_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :IA_Autoconsfiente ;
+    :saoEscritosPor :Autor_B .
+
+:Livro_Temporal_045 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Epsilon_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :IA_Autoconsfiente ;
+    :saoEscritosPor :Autor_G .
+
+:Livro_Temporal_046 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Delta_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Cura_da_Mortalidade ;
+    :saoEscritosPor :Autor_C .
+
+:Livro_Temporal_047 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Beta_0,
+        :Linha_Gama_Alt ;
+    :pertecemA :Cofre_do_Tempo_Perdido ;
+    :refereEvento :Exploracao_Espacial ;
+    :saoEscritosPor :Autor_H .
+
+:Livro_Temporal_048 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Epsilon_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_E .
+
+:Livro_Temporal_049 a :LivroFiccional,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Delta_Alt ;
+    :pertecemA :Biblioteca_Infinita ;
+    :refereEvento :Viagem_Intergalactica ;
+    :saoEscritosPor :Autor_J .
+
+:Livro_Temporal_050 a :LivroParadoxal,
+        owl:NamedIndividual ;
+    :existemEm :Linha_Alpha_0,
+        :Linha_Delta_Alt ;
+    :pertecemA :Torre_do_Conhecimento ;
+    :refereEvento :Pax_Romana ;
+    :saoEscritosPor :Autor_J .
+
+:Ptolomeu_X a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Infinita .
+
+:Sibilina a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Central_do_Tempo .
+
+:Zeno a :Bibliotecario,
+        owl:NamedIndividual ;
+    :trabalhamEm :Biblioteca_Infinita .
+
+:ocorremEm a owl:ObjectProperty ;
+    rdfs:domain :Evento ;
+    rdfs:range :LinhaTemporal .
+
+:pertecemA a owl:ObjectProperty ;
+    rdfs:domain :Livro ;
+    rdfs:range :Biblioteca .
+
+:requisitam a owl:ObjectProperty ;
+    rdfs:domain :Leitor ;
+    rdfs:range :Livro .
+
+:saoEscritosPor a owl:ObjectProperty ;
+    rdfs:domain :Livro ;
+    rdfs:range :Autor .
+
+:Biblioteca_Entre_Ontem_e_Amanha a :Biblioteca,
+        owl:NamedIndividual .
+
+:Dominio_da_Energia_Livre a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Primeiro_Voo a :EventoHistorico,
+        owl:NamedIndividual .
+
+:trabalhamEm a owl:ObjectProperty ;
+    rdfs:domain :Bibliotecario ;
+    rdfs:range :Biblioteca .
+
+:Agente a owl:Class .
+
+:IA_Autoconsfiente a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Primeira_Cidade_Submarina a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Renascimento a :EventoHistorico,
+        owl:NamedIndividual .
+
+:refereEvento a owl:ObjectProperty ;
+    rdfs:domain :Livro ;
+    rdfs:range :Evento .
+
+:Autor_8 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_G a :Autor,
+        owl:NamedIndividual ;
+    :nome "Stanislaw Lem II"^^xsd:string .
+
+:Contato_Sirius a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Fim_da_Escassez a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Pessoa a owl:Class ;
+    rdfs:subClassOf :Agente .
+
+:existemEm a owl:ObjectProperty ;
+    rdfs:domain :Livro ;
+    rdfs:range :LinhaTemporal .
+
+:Autor_1 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_10 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_3 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_6 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_B a :Autor,
+        owl:NamedIndividual ;
+    :nome "Ursula K. Le Guin II"^^xsd:string .
+
+:Autor_C a :Autor,
+        owl:NamedIndividual ;
+    :nome "Philip K. Dick II"^^xsd:string .
+
+:Autor_D a :Autor,
+        owl:NamedIndividual ;
+    :nome "Jorge Luis Borges II"^^xsd:string .
+
+:Autor_H a :Autor,
+        owl:NamedIndividual ;
+    :nome "Margaret Atwood II"^^xsd:string .
+
+:Autor_I a :Autor,
+        owl:NamedIndividual ;
+    :nome "Arthur C. Clarke II"^^xsd:string .
+
+:Cura_da_Mortalidade a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Evento a owl:Class .
+
+:Exploracao_Espacial a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Nascimento_da_IA a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Autor_4 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_5 a :Autor,
+        owl:NamedIndividual .
+
+:Crise_das_Tulipas a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Descobrimento_da_America a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Extincao_da_Fome a :EventoFuturo,
+        owl:NamedIndividual .
+
+:LinhaTemporal a owl:Class .
+
+:Pax_Romana a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Autor_7 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_F a :Autor,
+        owl:NamedIndividual ;
+    :nome "Italo Calvino II"^^xsd:string .
+
+:Autor_J a :Autor,
+        owl:NamedIndividual ;
+    :nome "H.G. Wells II"^^xsd:string .
+
+:Crise_de_1929 a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Extincao_Dino a :EventoHistorico,
+        owl:NamedIndividual .
+
+:LinhaOriginal a owl:Class ;
+    rdfs:subClassOf :LinhaTemporal .
+
+:Queda_do_Muro a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Revolucao_Industrial a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Autor_A a :Autor,
+        owl:NamedIndividual ;
+    :nome "Isaac Asimov II"^^xsd:string .
+
+:Linha_Alt_Omega a :LinhaAlternativa,
+        owl:NamedIndividual .
+
+:Nascimento_do_Sol a :EventoHistorico,
+        owl:NamedIndividual .
+
+:Autor_9 a :Autor,
+        owl:NamedIndividual .
+
+:Autor_E a :Autor,
+        owl:NamedIndividual ;
+    :nome "Octavia Butler II"^^xsd:string .
+
+:Explosao_Solar_2100 a :EventoFuturo,
+        owl:NamedIndividual .
+
+:LinhaAlternativa a owl:Class ;
+    rdfs:subClassOf :LinhaTemporal .
+
+:Biblioteca a owl:Class .
+
+:Guerra_dos_Nanobots a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Linha_Gama_Alt a :LinhaAlternativa,
+        owl:NamedIndividual .
+
+:Livro a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :existemEm ;
+            owl:someValuesFrom :LinhaTemporal ] .
+
+:Viagem_Intergalactica a :EventoFuturo,
+        owl:NamedIndividual .
+
+:Autor_2 a :Autor,
+        owl:NamedIndividual .
+
+:Linha_Alt_Recursiva a :LinhaAlternativa,
+        owl:NamedIndividual .
+
+:Linha_Epsilon_Alt a :LinhaAlternativa,
+        owl:NamedIndividual .
+
+:EventoFuturo a owl:Class ;
+    rdfs:subClassOf :Evento .
+
+:Bibliotecario a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :Biblioteca ;
+            owl:onProperty :trabalhamEm ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        :Pessoa .
+
+:EventoHistorico a owl:Class ;
+    rdfs:subClassOf :Evento .
+
+:Linha_Delta_Alt a :LinhaAlternativa,
+        owl:NamedIndividual .
+
+:Linha_Original_Prime a :LinhaOriginal,
+        owl:NamedIndividual .
+
+:Linha_Alpha_0 a :LinhaOriginal,
+        owl:NamedIndividual .
+
+:Biblioteca_Infinita a :Biblioteca,
+        owl:NamedIndividual .
+
+:Linha_Original_00 a :LinhaOriginal,
+        owl:NamedIndividual .
+
+:Torre_do_Conhecimento a :Biblioteca,
+        owl:NamedIndividual .
+
+:Linha_Beta_0 a :LinhaOriginal,
+        owl:NamedIndividual .
+
+:Cofre_do_Tempo_Perdido a :Biblioteca,
+        owl:NamedIndividual .
+
+:Linha_Alt_A a :LinhaAlternativa,
+        owl:NamedIndividual .
+
+:Autor a owl:Class ;
+    rdfs:subClassOf :Pessoa .
+
+:Biblioteca_Central_do_Tempo a :Biblioteca,
+        owl:NamedIndividual .
+
+:Leitor a owl:Class ;
+    rdfs:subClassOf :Pessoa .
+
+:Arquivo_do_Vazio_Temporal a :Biblioteca,
+        owl:NamedIndividual .
+
+:LivroHistorico a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :EventoHistorico ;
+            owl:onProperty :refereEvento ],
+        :Livro .
+
+:LivroFiccional a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf :EventoHistorico ] ;
+            owl:onProperty :refereEvento ],
+        :Livro ;
+    owl:disjointWith :LivroHistorico .
+
+:LivroParadoxal a owl:Class ;
+    rdfs:subClassOf :Livro ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :Livro [ a owl:Restriction ;
+                        owl:onProperty :existemEm ;
+                        owl:someValuesFrom :LinhaAlternativa ] [ a owl:Restriction ;
+                        owl:onProperty :existemEm ;
+                        owl:someValuesFrom :LinhaOriginal ] ) ] .
