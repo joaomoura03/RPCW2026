@@ -1,1 +1,5 @@
-pagina das linhas temporais
+pagina das linhas temporais:
+-tipo
+-livros que nela existem: id, titulo, tipolivro
+
+onde ha id's fazer links para as paginas
