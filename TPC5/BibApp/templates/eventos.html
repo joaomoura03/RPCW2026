@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Eventos{% endblock %}
+
+{% block content %}
+    <div class="w3-container w3-red w3-padding-16">
+        <h2><i class="fa fa-bolt w3-margin-right"></i>Eventos</h2>
+    </div>
+
+    <div class="w3-container w3-padding-32">
+        {% if eventos %}
+            {% for ev in eventos %}
+                <div class="w3-card-4 w3-white w3-margin-bottom">
+                    <div class="w3-container w3-padding w3-pale-red w3-leftbar w3-border-red">
+                        <h4 class="w3-margin-0"><b>{{ ev.nome }}</b></h4>
+                        <p class="w3-small w3-text-grey w3-margin-0">ID: {{ ev.id }}</p>
+                    </div>
+                    <div class="w3-container w3-padding">
+                        <p>{{ ev.descricao }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="w3-text-grey"><i>Nenhum evento encontrado.</i></p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ l.titulo }}{% endblock %}
+
+{% block content %}
+    <div class="w3-container {{ l.color }} w3-padding-16">
+        <h1>{{ l.titulo }}</h1>
+        <a href="/" class="w3-button w3-white w3-border w3-round"><b>&laquo; Voltar</b></a>
+    </div>
+
+    <div class="w3-container w3-padding-32">
+        <div class="w3-card-4 w3-white w3-padding">
+            <div class="w3-container">
+                <p><b>Autor:</b> {{ l.autor }}</p>
+                <p><b>Classificação:</b> <span class="w3-tag w3-round">{{ l.tipo }}</span></p>
+            </div>
+            
+            <div class="w3-row-padding w3-margin-top">
+                <div class="w3-third">
+                    <h4 class="w3-border-bottom w3-border-blue"><i class="fa fa-clock-o"></i> Linhas Temporais</h4>
+                    <ul class="w3-ul w3-hoverable">
+                        {% for linha in l.linhas %} 
+                            <li><a href="/linha/{{ linha }}" class="w3-text-blue" style="text-decoration:none">{{ linha }}</a></li> 
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="w3-twothird">
+                    <h4 class="w3-border-bottom w3-border-red"><i class="fa fa-bolt"></i> Eventos Referenciados</h4>
+                    <div class="w3-container">
+                        {% if l.eventos %}
+                            {% for ev in l.eventos %}
+                                <div class="w3-panel w3-leftbar w3-border-red w3-pale-red w3-padding-small">
+                                    <h5 class="w3-margin-0"><b>{{ ev.nome }}</b></h5>
+                                    <p class="w3-small w3-text-grey w3-margin-0">{{ ev.desc }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="w3-text-grey"><i>Nenhum evento associado a este livro.</i></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
