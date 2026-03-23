@@ -1,9 +1,8 @@
-PREFIX : <http://www.example.org/disease-ontology#>
-
 # ==============================================================================
 # Q1 - Quantas doenças estão presentes na ontologia?
 # ==============================================================================
 
+PREFIX : <http://www.example.org/disease-ontology#>
 SELECT (COUNT(DISTINCT ?disease) AS ?totalDoencas)
 WHERE {
     ?disease a :Disease .
@@ -14,38 +13,37 @@ WHERE {
 # Q2 - Que doenças estão associadas ao sintoma "yellowish_skin"?
 # ==============================================================================
 
-SELECT ?nome
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?disease
 WHERE {
     ?disease a :Disease ;
              :hasSymptom :yellowish_skin ;
-             :name ?nome .
 }
-ORDER BY ?nome
 
 
 # ==============================================================================
 # Q3 - Que doenças estão associadas ao tratamento "exercise"?
 # ==============================================================================
 
-SELECT ?nome
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?disease
 WHERE {
     ?disease a :Disease ;
              :hasTreatment :exercise ;
-             :name ?nome .
 }
-ORDER BY ?nome
 
 
 # ==============================================================================
 # Q4 - Lista ordenada alfabeticamente com o nome dos doentes
 # ==============================================================================
 
+PREFIX : <http://www.example.org/disease-ontology#>
 SELECT ?nome
 WHERE {
     ?patient a :Patient ;
              :name ?nome .
 }
-ORDER BY ?nome
 
 
 # ==============================================================================
@@ -54,43 +52,26 @@ ORDER BY ?nome
 #              Gera triplos da forma :patientX :hasDisease :diseaseY
 # ==============================================================================
 
+PREFIX : <http://www.example.org/disease-ontology#>
 CONSTRUCT {
     ?patient :hasDisease ?disease .
 }
 WHERE {
     ?patient a :Patient .
     ?disease a :Disease .
+    ?patient :exhibitsSymptom ?symptom .
+    ?disease :hasSymptom ?symptom .
+}
 
-    # contar sintomas em comum entre o doente e cada doença
-    {
-        SELECT ?patient ?disease (COUNT(?sintoma) AS ?emComum)
-        WHERE {
-            ?patient :exhibitsSymptom ?sintoma .
-            ?disease :hasSymptom ?sintoma .
-        }
-        GROUP BY ?patient ?disease
-    }
-
-    # encontrar o máximo de sintomas em comum para cada doente
-    {
-        SELECT ?patient (MAX(?emComum) AS ?maxComum)
-        WHERE {
-            ?patient a :Patient .
-            ?disease a :Disease .
-            {
-                SELECT ?patient ?disease (COUNT(?sintoma) AS ?emComum)
-                WHERE {
-                    ?patient :exhibitsSymptom ?sintoma .
-                    ?disease :hasSymptom ?sintoma .
-                }
-                GROUP BY ?patient ?disease
-            }
-        }
-        GROUP BY ?patient
-    }
-
-    # manter apenas o par (doente, doença) com o máximo de sobreposição
-    FILTER(?emComum = ?maxComum)
+PREFIX : <http://www.example.org/disease-ontology#>
+INSERT {
+    ?patient :hasDisease ?disease .
+}
+WHERE {
+    ?patient a :Patient .
+    ?disease a :Disease .
+    ?patient :exhibitsSymptom ?symptom .
+    ?disease :hasSymptom ?symptom .
 }
 
 
@@ -99,6 +80,7 @@ WHERE {
 #      Nota: requer que os triplos :hasDisease gerados na Q5 estejam na ontologia
 # ==============================================================================
 
+PREFIX : <http://www.example.org/disease-ontology#>
 SELECT ?nomeDoenca (COUNT(DISTINCT ?patient) AS ?numDoentes)
 WHERE {
     ?patient a :Patient ;
@@ -113,6 +95,7 @@ ORDER BY DESC(?numDoentes)
 # Q7 - Distribuição das doenças pelos sintomas (sintoma, nº de doenças)
 # ==============================================================================
 
+PREFIX : <http://www.example.org/disease-ontology#>
 SELECT ?nomeSintoma (COUNT(DISTINCT ?disease) AS ?numDoencas)
 WHERE {
     ?disease a :Disease ;
@@ -127,6 +110,7 @@ ORDER BY DESC(?numDoencas)
 # Q8 - Distribuição das doenças pelos tratamentos (tratamento, nº de doenças)
 # ==============================================================================
 
+PREFIX : <http://www.example.org/disease-ontology#>
 SELECT ?nomeTratamento (COUNT(DISTINCT ?disease) AS ?numDoencas)
 WHERE {
     ?disease a :Disease ;
@@ -141,6 +125,7 @@ ORDER BY DESC(?numDoencas)
 # Q9 - Lista das doenças e respetivos sintomas (doença, lista de sintomas)
 # ==============================================================================
 
+PREFIX : <http://www.example.org/disease-ontology#>
 SELECT ?nomeDoenca (GROUP_CONCAT(?nomeSintoma ; separator=", ") AS ?sintomas)
 WHERE {
     ?disease a :Disease ;
