@@ -196,7 +196,8 @@
         :follow_up,
         :have_balanced_diet .
 
-:Dimorphic_hemmorhoidspiles a :Disease ;
+:Dimorphic_hemorrhoidspiles a :Disease ;
+    :description "Hemorrhoids, also spelled haemorrhoids, are vascular structures in the anal canal. In their ... Other names, Haemorrhoids, piles, hemorrhoidal disease ." ;
     :hasSymptom :bloody_stool,
         :constipation,
         :irritation_in_anus,
@@ -206,10 +207,6 @@
         :consume_alovera_juice,
         :consume_witch_hazel,
         :warm_bath_with_epsom_salt ;
-    :name "Dimorphic hemmorhoids(piles)" .
-
-:Dimorphic_hemorrhoidspiles a :Disease ;
-    :description "Hemorrhoids, also spelled haemorrhoids, are vascular structures in the anal canal. In their ... Other names, Haemorrhoids, piles, hemorrhoidal disease ." ;
     :name "Dimorphic hemorrhoids(piles)" .
 
 :Drug_Reaction a :Disease ;

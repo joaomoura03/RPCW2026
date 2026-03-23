@@ -149,16 +149,13 @@
         :Exercise,
         :InsulinTherapy .
 
-:Dimorphic_hemmorhoidspiles a :Disease ;
+:Dimorphic_hemorrhoidspiles a :Disease ;
+    :description "Hemorrhoids, also spelled haemorrhoids, are vascular structures in the anal canal. In their ... Other names, Haemorrhoids, piles, hemorrhoidal disease ." ;
     :hasSymptom :bloody_stool,
         :constipation,
         :irritation_in_anus,
         :pain_during_bowel_movements,
         :pain_in_anal_region ;
-    :name "Dimorphic hemmorhoids(piles)" .
-
-:Dimorphic_hemorrhoidspiles a :Disease ;
-    :description "Hemorrhoids, also spelled haemorrhoids, are vascular structures in the anal canal. In their ... Other names, Haemorrhoids, piles, hemorrhoidal disease ." ;
     :name "Dimorphic hemorrhoids(piles)" .
 
 :Drug_Reaction a :Disease ;

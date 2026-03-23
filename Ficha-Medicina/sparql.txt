@@ -1,0 +1,152 @@
+PREFIX : <http://www.example.org/disease-ontology#>
+
+# ==============================================================================
+# Q1 - Quantas doenças estão presentes na ontologia?
+# ==============================================================================
+
+SELECT (COUNT(DISTINCT ?disease) AS ?totalDoencas)
+WHERE {
+    ?disease a :Disease .
+}
+
+
+# ==============================================================================
+# Q2 - Que doenças estão associadas ao sintoma "yellowish_skin"?
+# ==============================================================================
+
+SELECT ?nome
+WHERE {
+    ?disease a :Disease ;
+             :hasSymptom :yellowish_skin ;
+             :name ?nome .
+}
+ORDER BY ?nome
+
+
+# ==============================================================================
+# Q3 - Que doenças estão associadas ao tratamento "exercise"?
+# ==============================================================================
+
+SELECT ?nome
+WHERE {
+    ?disease a :Disease ;
+             :hasTreatment :exercise ;
+             :name ?nome .
+}
+ORDER BY ?nome
+
+
+# ==============================================================================
+# Q4 - Lista ordenada alfabeticamente com o nome dos doentes
+# ==============================================================================
+
+SELECT ?nome
+WHERE {
+    ?patient a :Patient ;
+             :name ?nome .
+}
+ORDER BY ?nome
+
+
+# ==============================================================================
+# Q5 - CONSTRUCT: diagnosticar a doença de cada doente
+#      Lógica: associar o doente à doença com mais sintomas em comum.
+#              Gera triplos da forma :patientX :hasDisease :diseaseY
+# ==============================================================================
+
+CONSTRUCT {
+    ?patient :hasDisease ?disease .
+}
+WHERE {
+    ?patient a :Patient .
+    ?disease a :Disease .
+
+    # contar sintomas em comum entre o doente e cada doença
+    {
+        SELECT ?patient ?disease (COUNT(?sintoma) AS ?emComum)
+        WHERE {
+            ?patient :exhibitsSymptom ?sintoma .
+            ?disease :hasSymptom ?sintoma .
+        }
+        GROUP BY ?patient ?disease
+    }
+
+    # encontrar o máximo de sintomas em comum para cada doente
+    {
+        SELECT ?patient (MAX(?emComum) AS ?maxComum)
+        WHERE {
+            ?patient a :Patient .
+            ?disease a :Disease .
+            {
+                SELECT ?patient ?disease (COUNT(?sintoma) AS ?emComum)
+                WHERE {
+                    ?patient :exhibitsSymptom ?sintoma .
+                    ?disease :hasSymptom ?sintoma .
+                }
+                GROUP BY ?patient ?disease
+            }
+        }
+        GROUP BY ?patient
+    }
+
+    # manter apenas o par (doente, doença) com o máximo de sobreposição
+    FILTER(?emComum = ?maxComum)
+}
+
+
+# ==============================================================================
+# Q6 - Distribuição dos doentes pelas doenças (doença, nº de doentes)
+#      Nota: requer que os triplos :hasDisease gerados na Q5 estejam na ontologia
+# ==============================================================================
+
+SELECT ?nomeDoenca (COUNT(DISTINCT ?patient) AS ?numDoentes)
+WHERE {
+    ?patient a :Patient ;
+             :hasDisease ?disease .
+    ?disease :name ?nomeDoenca .
+}
+GROUP BY ?nomeDoenca
+ORDER BY DESC(?numDoentes)
+
+
+# ==============================================================================
+# Q7 - Distribuição das doenças pelos sintomas (sintoma, nº de doenças)
+# ==============================================================================
+
+SELECT ?nomeSintoma (COUNT(DISTINCT ?disease) AS ?numDoencas)
+WHERE {
+    ?disease a :Disease ;
+             :hasSymptom ?symptom .
+    ?symptom :name ?nomeSintoma .
+}
+GROUP BY ?nomeSintoma
+ORDER BY DESC(?numDoencas)
+
+
+# ==============================================================================
+# Q8 - Distribuição das doenças pelos tratamentos (tratamento, nº de doenças)
+# ==============================================================================
+
+SELECT ?nomeTratamento (COUNT(DISTINCT ?disease) AS ?numDoencas)
+WHERE {
+    ?disease a :Disease ;
+             :hasTreatment ?treatment .
+    ?treatment :name ?nomeTratamento .
+}
+GROUP BY ?nomeTratamento
+ORDER BY DESC(?numDoencas)
+
+
+# ==============================================================================
+# Q9 - Lista das doenças e respetivos sintomas (doença, lista de sintomas)
+# ==============================================================================
+
+SELECT ?nomeDoenca (GROUP_CONCAT(?nomeSintoma ; separator=", ") AS ?sintomas)
+WHERE {
+    ?disease a :Disease ;
+             :name ?nomeDoenca ;
+             :hasSymptom ?symptom .
+    ?symptom :name ?nomeSintoma .
+}
+GROUP BY ?nomeDoenca
+ORDER BY ?nomeDoenca
