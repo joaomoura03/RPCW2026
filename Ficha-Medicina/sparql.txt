@@ -1,5 +1,5 @@
 # ==============================================================================
-# Q1 - Quantas doenças estão presentes na ontologia?
+# 11-a - Quantas doenças estão presentes na ontologia?
 # ==============================================================================
 
 PREFIX : <http://www.example.org/disease-ontology#>
@@ -10,7 +10,7 @@ WHERE {
 
 
 # ==============================================================================
-# Q2 - Que doenças estão associadas ao sintoma "yellowish_skin"?
+# 11-b - Que doenças estão associadas ao sintoma "yellowish_skin"?
 # ==============================================================================
 
 PREFIX : <http://www.example.org/disease-ontology#>
@@ -22,7 +22,7 @@ WHERE {
 
 
 # ==============================================================================
-# Q3 - Que doenças estão associadas ao tratamento "exercise"?
+# 11-c - Que doenças estão associadas ao tratamento "exercise"?
 # ==============================================================================
 
 
@@ -35,7 +35,7 @@ WHERE {
 
 
 # ==============================================================================
-# Q4 - Lista ordenada alfabeticamente com o nome dos doentes
+# 11-d - Lista ordenada alfabeticamente com o nome dos doentes
 # ==============================================================================
 
 PREFIX : <http://www.example.org/disease-ontology#>
@@ -47,7 +47,7 @@ WHERE {
 
 
 # ==============================================================================
-# Q5 - CONSTRUCT: diagnosticar a doença de cada doente
+# 12 - CONSTRUCT: diagnosticar a doença de cada doente
 #      Lógica: associar o doente à doença com mais sintomas em comum.
 #              Gera triplos da forma :patientX :hasDisease :diseaseY
 # ==============================================================================
@@ -76,7 +76,7 @@ WHERE {
 
 
 # ==============================================================================
-# Q6 - Distribuição dos doentes pelas doenças (doença, nº de doentes)
+# 13 - Distribuição dos doentes pelas doenças (doença, nº de doentes)
 #      Nota: requer que os triplos :hasDisease gerados na Q5 estejam na ontologia
 # ==============================================================================
 
@@ -92,7 +92,7 @@ ORDER BY DESC(?numDoentes)
 
 
 # ==============================================================================
-# Q7 - Distribuição das doenças pelos sintomas (sintoma, nº de doenças)
+# 14 - Distribuição das doenças pelos sintomas (sintoma, nº de doenças)
 # ==============================================================================
 
 PREFIX : <http://www.example.org/disease-ontology#>
@@ -107,7 +107,7 @@ ORDER BY DESC(?numDoencas)
 
 
 # ==============================================================================
-# Q8 - Distribuição das doenças pelos tratamentos (tratamento, nº de doenças)
+# 15 - Distribuição das doenças pelos tratamentos (tratamento, nº de doenças)
 # ==============================================================================
 
 PREFIX : <http://www.example.org/disease-ontology#>
@@ -122,7 +122,7 @@ ORDER BY DESC(?numDoencas)
 
 
 # ==============================================================================
-# Q9 - Lista das doenças e respetivos sintomas (doença, lista de sintomas)
+# 16 - Lista das doenças e respetivos sintomas (doença, lista de sintomas)
 # ==============================================================================
 
 PREFIX : <http://www.example.org/disease-ontology#>
