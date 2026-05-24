@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Géneros Musicais — Arquivo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .generos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; margin-top: 1rem; }
+    .genero-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.5rem; }
+    .genero-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold-light); font-weight: 700; margin-bottom: .8rem; display: flex; align-items: center; justify-content: space-between; }
+    .genero-count { background: rgba(201,150,58,.15); border: 1px solid rgba(201,150,58,.2); color: var(--gold-light); padding: .15rem .5rem; border-radius: 20px; font-size: .75rem; }
+    .genero-artists-wrap { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .artist-chip { background: var(--surface2); border: 1px solid var(--border); color: var(--text); text-decoration: none; border-radius: 4px; padding: .3rem .65rem; font-size: .78rem; transition: all .2s; }
+    .artist-chip:hover { border-color: var(--gold); color: var(--gold-light); }
+    .flash-success {
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      color: #4ade80;
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .flash-error {
+      background: rgba(155, 35, 53, 0.1);
+      border: 1px solid rgba(155, 35, 53, 0.3);
+      color: #ff5268;
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link active"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="page-hero">
+      <h1>Géneros <em>Musicais</em></h1>
+      <hr class="hero-rule">
+      <p>Artistas e bandas agrupados pela sua vertente musical no triplestore.</p>
+    </div>
+
+    <!-- ══ FORMULÁRIO ADICIONAR GÉNERO ══ -->
+    <div class="section-divider"><span><i class="fa-solid fa-plus"></i> Adicionar Novo Género</span></div>
+    <div class="filter-box" style="background: var(--surface2); padding: 1.5rem 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+      <form method="POST" action="/genero/adicionar" style="width: 100%; display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
+        <div class="form-group" style="flex: 1; min-width: 220px;">
+          <label>Nome do Género *</label>
+          <input type="text" name="nome" placeholder="Ex: Reggae, Metal, Jazz, Trap..."
+                 class="form-control" required
+                 style="text-transform: capitalize;">
+        </div>
+        <div style="padding-bottom: 0;">
+          <button type="submit" class="btn btn-primary" style="font-weight: bold; height: 42px;">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Adicionar Género
+          </button>
+        </div>
+        <p style="width: 100%; margin: 0; color: var(--muted); font-size: 0.82rem;">
+          <i class="fa-solid fa-circle-info"></i>
+          O género ficará disponível para atribuição a artistas e álbuns.
+        </p>
+      </form>
+    </div>
+
+    <!-- ══ GRID DE GÉNEROS ══ -->
+    <div class="section-divider"><span>{{ generos|length }} género{% if generos|length != 1 %}s{% endif %} registado{% if generos|length != 1 %}s{% endif %}</span></div>
+
+    <div class="generos-grid">
+      {% for g in generos %}
+      <div class="genero-card">
+        <div class="genero-name">
+          <span><i class="fa-solid fa-sliders" style="color:var(--gold); margin-right: 0.4rem;"></i> {{ g.nome }}</span>
+          <span class="genero-count">{{ g.total }}</span>
+        </div>
+        <div class="genero-artists-wrap">
+          {% if g.artistas %}
+            {% for artista in g.artistas %}
+              <a href="/artista/{{ artista.id }}" class="artist-chip">{{ artista.nome }}</a>
+            {% endfor %}
+          {% else %}
+            <span style="color:var(--muted); font-size:.8rem; font-style:italic;">Nenhum artista associado</span>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+</body>
+</html>

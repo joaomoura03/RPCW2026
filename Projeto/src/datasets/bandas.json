@@ -1,0 +1,436 @@
+{
+  "bandas": [
+    {
+      "id": "quarteto_1111",
+      "nome": "Quarteto 1111",
+      "anoFormacao": 1967,
+      "generos": [
+        "Rock",
+        "Pop"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": []
+    },
+    {
+      "id": "sheiks",
+      "nome": "Os Sheiks",
+      "anoFormacao": 1963,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": [
+        "paulo_de_carvalho"
+      ]
+    },
+    {
+      "id": "taxi",
+      "nome": "Táxi",
+      "anoFormacao": 1979,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "uhf",
+      "nome": "UHF",
+      "anoFormacao": 1978,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "edisco",
+      "temMembro": []
+    },
+    {
+      "id": "radio_macau",
+      "nome": "Rádio Macau",
+      "anoFormacao": 1983,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": []
+    },
+    {
+      "id": "setima_legiao",
+      "nome": "Sétima Legião",
+      "anoFormacao": 1982,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": [
+        "rodrigo_leao",
+        "pedro_ayres_magalhaes"
+      ],
+      "descricao": "Banda emblemática do rock português dos anos 80."
+    },
+    {
+      "id": "xutos_pontapes",
+      "nome": "Xutos & Pontapés",
+      "anoFormacao": 1978,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [],
+      "descricao": "A mais longeva banda de rock português, activa desde 1978.",
+      "curiosidade": "O vocalista Tim faleceu em 2019 após décadas de actividade."
+    },
+    {
+      "id": "rui_veloso_banda",
+      "nome": "Rui Veloso e Banda",
+      "anoFormacao": 1980,
+      "generos": [
+        "Rock",
+        "Blues"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": [
+        "rui_veloso"
+      ]
+    },
+    {
+      "id": "herois_do_mar",
+      "nome": "Heróis do Mar",
+      "anoFormacao": 1981,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": []
+    },
+    {
+      "id": "ex_votos",
+      "nome": "Os Ex-Votos",
+      "anoFormacao": 1989,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    },
+    {
+      "id": "mao_morta",
+      "nome": "Mão Morta",
+      "anoFormacao": 1984,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    },
+    {
+      "id": "quinta_do_bill",
+      "nome": "Quinta do Bill",
+      "anoFormacao": 1987,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "peste_sida",
+      "nome": "Peste & Sida",
+      "anoFormacao": 1986,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    },
+    {
+      "id": "trabalhadores_mar",
+      "nome": "Trabalhadores do Mar",
+      "anoFormacao": 1987,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "polygram",
+      "temMembro": []
+    },
+    {
+      "id": "cla",
+      "nome": "Clã",
+      "anoFormacao": 1996,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "ornatos_violeta",
+      "nome": "Ornatos Violeta",
+      "anoFormacao": 1991,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "manel_cruz"
+      ],
+      "descricao": "Banda de rock alternativo do Porto, considerada um dos maiores projetos do rock português.",
+      "curiosidade": "Terminaram a carreira em 2002 no auge da popularidade."
+    },
+    {
+      "id": "linda_martini",
+      "nome": "Linda Martini",
+      "anoFormacao": 2003,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "moonspell",
+      "nome": "Moonspell",
+      "anoFormacao": 1992,
+      "generos": [
+        "Rock",
+        "Metal"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "fernando_ribeiro"
+      ],
+      "descricao": "A banda de metal português com maior projeção internacional.",
+      "curiosidade": "Foram o primeiro grupo de metal a tocar no Rock in Rio Lisboa."
+    },
+    {
+      "id": "capitao_fausto",
+      "nome": "Capitão Fausto",
+      "anoFormacao": 2009,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "tomas_wallenstein"
+      ],
+      "descricao": "Banda de rock indie de Lisboa com forte influência da cena independente."
+    },
+    {
+      "id": "kussondulola",
+      "nome": "Kussondulola",
+      "anoFormacao": 1992,
+      "generos": [
+        "Pop",
+        "Reggae"
+      ],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": []
+    },
+    {
+      "id": "corvos",
+      "nome": "Corvos",
+      "anoFormacao": 1998,
+      "generos": [
+        "Rock",
+        "Metal"
+      ],
+      "pertenceAEditora": "zona_musica",
+      "temMembro": []
+    },
+    {
+      "id": "the_gift",
+      "nome": "The Gift",
+      "anoFormacao": 1994,
+      "generos": [
+        "Pop",
+        "Indie"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": [],
+      "descricao": "Banda de pop alternativo de Coimbra, uma das mais internacionais do pop português."
+    },
+    {
+      "id": "deolinda",
+      "nome": "Deolinda",
+      "anoFormacao": 2006,
+      "generos": [
+        "Pop",
+        "Fado",
+        "Folk"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "ana_bacalhau"
+      ],
+      "descricao": "Quarteto de Lisboa que mistura fado, folk e pop com letras sociais e poéticas."
+    },
+    {
+      "id": "amor_electro",
+      "nome": "Amor Electro",
+      "anoFormacao": 2010,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "mariza_liz"
+      ]
+    },
+    {
+      "id": "os_quatro_e_meia",
+      "nome": "Os Quatro e Meia",
+      "anoFormacao": 2013,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "dzrt",
+      "nome": "D'ZRT",
+      "anoFormacao": 2004,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "santamaria",
+      "nome": "Santamaria",
+      "anoFormacao": 1998,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "ovacao",
+      "temMembro": []
+    },
+    {
+      "id": "davidinho_e_banda",
+      "nome": "David Fonseca e Banda",
+      "anoFormacao": 2000,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "david_fonseca"
+      ]
+    },
+    {
+      "id": "wet_bed_gang",
+      "nome": "Wet Bed Gang",
+      "anoFormacao": 2014,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": []
+    },
+    {
+      "id": "buraka_som_sistema",
+      "nome": "Buraka Som Sistema",
+      "anoFormacao": 2006,
+      "generos": [
+        "HipHop",
+        "Electronica"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [],
+      "descricao": "Coletivo musical de Lisboa que popularizou o kuduro e a música eletrónica africana."
+    },
+    {
+      "id": "expensive_soul",
+      "nome": "Expensive Soul",
+      "anoFormacao": 1999,
+      "generos": [
+        "HipHop",
+        "RB"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": []
+    },
+    {
+      "id": "black_company",
+      "nome": "Black Company",
+      "anoFormacao": 1993,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "edisco",
+      "temMembro": []
+    },
+    {
+      "id": "dealema_banda",
+      "nome": "Dealema",
+      "anoFormacao": 1999,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "dealema"
+      ]
+    },
+    {
+      "id": "madredeus",
+      "nome": "Madredeus",
+      "anoFormacao": 1986,
+      "generos": [
+        "Folk",
+        "Indie",
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "teresa_salgueiro",
+        "rodrigo_leao"
+      ],
+      "descricao": "Grupo musical português que mistura fado, música medieval e pop, reconhecido internacionalmente.",
+      "curiosidade": "Apareceram no filme 'Lisboa Story' de Wim Wenders em 1994."
+    },
+    {
+      "id": "pedro_abrunhosa_banda",
+      "nome": "Pedro Abrunhosa e Comité Caviar",
+      "anoFormacao": 1993,
+      "generos": [
+        "Pop",
+        "Jazz",
+        "Soul"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "pedro_abrunhosa"
+      ],
+      "descricao": "Projeto musical do compositor portuense Pedro Abrunhosa."
+    },
+    {
+      "id": "tao_cruz_band",
+      "nome": "Silence 4",
+      "anoFormacao": 1994,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "david_fonseca"
+      ],
+      "descricao": "Banda de rock alternativo portuense precursora do indie rock português."
+    }
+  ]
+}

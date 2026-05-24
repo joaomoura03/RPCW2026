@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquivo da Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link active"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header class="page-hero">
+      <h1>Arquivo da <em>Música Portuguesa</em></h1>
+      <p>Património e Conhecimento Web Semântico sobre os maiores vultos da nossa história musical.</p>
+      <hr class="hero-rule">
+    </header>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">{{ stats.solos }}</div><div class="stat-label">Artistas Solo</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.bandas }}</div><div class="stat-label">Bandas</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.albuns }}</div><div class="stat-label">Álbuns</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.musicas }}</div><div class="stat-label">Músicas</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.premios }}</div><div class="stat-label">Prémios</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.concertos }}</div><div class="stat-label">Concertos</div></div>
+    </div>
+
+    <div class="section-divider"><span>Filtrar Catálogo</span></div>
+    <form method="GET" action="/" class="filter-box" style="flex-wrap: wrap;">
+
+      <input type="text" name="q" value="{{ busca }}"
+             placeholder="Pesquise por nome..."
+             class="search-input" style="flex: 2; min-width: 200px;">
+
+      <select name="genero" class="form-control" style="flex:1; min-width: 130px;">
+        <option value="">Todos os Géneros</option>
+        {% for g in generos %}
+          <option value="{{ g.id }}" {% if filtro_genero == g.id %}selected{% endif %}>{{ g.nome }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="tipo" class="form-control" style="flex:1; min-width: 110px;">
+        <option value="">Solo + Banda</option>
+        <option value="Solo" {% if filtro_tipo == 'Solo' %}selected{% endif %}>Solo</option>
+        <option value="Banda" {% if filtro_tipo == 'Banda' %}selected{% endif %}>Banda</option>
+      </select>
+
+      <select name="editora" class="form-control" style="flex:1; min-width: 150px;">
+        <option value="">Todas as Editoras</option>
+        {% for e in editoras %}
+          <option value="{{ e.id }}" {% if filtro_editora == e.id %}selected{% endif %}>{{ e.nome }}</option>
+        {% endfor %}
+      </select>
+
+      <input type="number" name="ano_de" value="{{ filtro_ano_de }}"
+             placeholder="De (ano)" class="form-control"
+             style="flex:0 0 110px; min-width: 100px;">
+
+      <input type="number" name="ano_ate" value="{{ filtro_ano_ate }}"
+             placeholder="Até (ano)" class="form-control"
+             style="flex:0 0 110px; min-width: 100px;">
+
+      <button type="submit" class="btn btn-primary">
+        <i class="fa-solid fa-filter"></i> Filtrar
+      </button>
+      {% if busca or filtro_genero or filtro_tipo or filtro_editora or filtro_ano_de or filtro_ano_ate %}
+        <a href="/" class="btn btn-ghost">Limpar</a>
+      {% endif %}
+    </form>
+
+    {% if artistas %}
+    <table class="artist-table">
+      <thead>
+        <tr>
+          <th>Nome do Artista / Banda</th>
+          <th>Classificação</th>
+          <th style="text-align: right;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in artistas %}
+        <tr>
+          <td style="font-size:1.1rem; font-weight:600; color:var(--cream);">{{ a.nome }}</td>
+          <td>
+            {% if a.tipo == "Solo" %}
+              <span class="badge badge-solo"><i class="fa-solid fa-user"></i> Solo</span>
+            {% else %}
+              <span class="badge badge-banda"><i class="fa-solid fa-users"></i> Banda</span>
+            {% endif %}
+          </td>
+          <td style="text-align: right;">
+            <a href="/artista/{{ a.id }}" class="btn btn-ghost" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Ver Perfil →</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+      <div class="icon">🎵</div>
+      <p>Nenhum artista corresponde aos critérios de filtragem selecionados.</p>
+    </div>
+    {% endif %}
+
+    <div class="section-divider" style="margin-top:4rem;"><span><i class="fa-solid fa-plus"></i> Expandir Conhecimento (Inserir Artista)</span></div>
+    <div class="filter-box" style="background:var(--surface2); padding:2rem; border-radius:var(--radius);">
+      <form method="POST" action="/artista/adicionar" style="width:100%;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-bottom:1.5rem;">
+          <div class="form-group">
+            <label>Nome do Artista/Banda</label>
+            <input type="text" name="nome" placeholder="Ex: Zeca Afonso" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Tipo</label>
+            <select name="tipo" class="form-control">
+              <option value="ArtistaSolo">Artista Solo</option>
+              <option value="Banda">Banda / Coletivo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ano (Nascimento / Formação)</label>
+            <input type="number" name="ano" placeholder="Ex: 1929" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Editora</label>
+            <select name="editora" class="form-control">
+              <option value="">— Nenhuma —</option>
+              {% for e in editoras %}
+                <option value="{{ e.id }}">{{ e.nome }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Géneros Musicais</label>
+            <div class="genero-selector">
+              {% for g in generos_globais %}
+                <label>
+                  <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
+                  {{ g.nome }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <button type="submit" class="btn btn-primary" style="font-weight:bold;"><i class="fa-solid fa-cloud-arrow-up"></i> Submeter</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

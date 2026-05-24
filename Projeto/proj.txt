@@ -1,3 +1,0 @@
-- Dominio ontologia
-- Especificar a ontologia
-- WebApp de exploração da ontologia

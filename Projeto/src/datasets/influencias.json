@@ -1,0 +1,68 @@
+{
+  "influencias": [
+    {
+      "influenciador": "amalia_rodrigues",
+      "influenciado": "mariza"
+    },
+    {
+      "influenciador": "amalia_rodrigues",
+      "influenciado": "carminho"
+    },
+    {
+      "influenciador": "amalia_rodrigues",
+      "influenciado": "ana_moura"
+    },
+    {
+      "influenciador": "amalia_rodrigues",
+      "influenciado": "gisela_joao"
+    },
+    {
+      "influenciador": "carlos_do_carmo",
+      "influenciado": "antonio_zambujo"
+    },
+    {
+      "influenciador": "zeca_afonso",
+      "influenciado": "sergio_godinho"
+    },
+    {
+      "influenciador": "zeca_afonso",
+      "influenciado": "adriano_correia"
+    },
+    {
+      "influenciador": "rui_veloso",
+      "influenciado": "jorge_palma"
+    },
+    {
+      "influenciador": "rui_veloso",
+      "influenciado": "ornatos_violeta"
+    },
+    {
+      "influenciador": "antonio_variacoes",
+      "influenciado": "barbara_bandeira"
+    },
+    {
+      "influenciador": "ornatos_violeta",
+      "influenciado": "capitao_fausto"
+    },
+    {
+      "influenciador": "ornatos_violeta",
+      "influenciado": "linda_martini"
+    },
+    {
+      "influenciador": "boss_ac",
+      "influenciado": "valete"
+    },
+    {
+      "influenciador": "boss_ac",
+      "influenciado": "capicua"
+    },
+    {
+      "influenciador": "madredeus",
+      "influenciado": "deolinda"
+    },
+    {
+      "influenciador": "buraka_som_sistema",
+      "influenciado": "slow_j"
+    }
+  ]
+}

@@ -1,0 +1,575 @@
+{
+  "musicas": [
+    {
+      "id": "estranha_forma_mus",
+      "nome": "Estranha Forma de Vida",
+      "interpretadaPor": ["amalia_rodrigues"],
+      "pertenceAoAlbum": "estranha_forma_vida",
+      "generos": ["Fado"],
+      "duracao": 213,
+      "curiosidade": "Baseada num poema de Florbela Espanca."
+    },
+    {
+      "id": "uma_casa_portuguesa",
+      "nome": "Uma Casa Portuguesa",
+      "interpretadaPor": ["amalia_rodrigues"],
+      "generos": ["Fado"],
+      "duracao": 178,
+      "curiosidade": "Um dos temas mais identificativos de Amália no estrangeiro."
+    },
+    {
+      "id": "lagrima_mus",
+      "nome": "Lágrima",
+      "interpretadaPor": ["amalia_rodrigues"],
+      "pertenceAoAlbum": "com_que_voz",
+      "generos": ["Fado"],
+      "duracao": 195
+    },
+    {
+      "id": "povo_que_lavas",
+      "nome": "Povo Que Lavas no Rio",
+      "interpretadaPor": ["amalia_rodrigues"],
+      "generos": ["Fado"],
+      "duracao": 224,
+      "curiosidade": "Letra de Pedro Homem de Melo."
+    },
+    {
+      "id": "barco_negro",
+      "nome": "Barco Negro",
+      "interpretadaPor": ["amalia_rodrigues"],
+      "generos": ["Fado"],
+      "duracao": 240,
+      "curiosidade": "Considerada uma das mais belas canções de Amália."
+    },
+    {
+      "id": "com_que_voz_mus",
+      "nome": "Com Que Voz",
+      "interpretadaPor": ["amalia_rodrigues"],
+      "pertenceAoAlbum": "com_que_voz",
+      "generos": ["Fado"],
+      "duracao": 208,
+      "curiosidade": "Letra baseada num poema de Luís de Camões."
+    },
+    {
+      "id": "um_homem_cidade",
+      "nome": "Um Homem na Cidade",
+      "interpretadaPor": ["carlos_do_carmo"],
+      "pertenceAoAlbum": "fado_em_mim",
+      "generos": ["Fado"],
+      "duracao": 255
+    },
+    {
+      "id": "lisboa_menina_moca",
+      "nome": "Lisboa, Menina e Moça",
+      "interpretadaPor": ["carlos_do_carmo"],
+      "generos": ["Fado"],
+      "duracao": 230
+    },
+    {
+      "id": "corre_mus",
+      "nome": "Corre",
+      "interpretadaPor": ["mariza"],
+      "pertenceAoAlbum": "mariza_fado_em_mim",
+      "generos": ["Fado"],
+      "duracao": 245
+    },
+    {
+      "id": "transparente_mus",
+      "nome": "Transparente",
+      "interpretadaPor": ["mariza"],
+      "pertenceAoAlbum": "transparente_alb",
+      "generos": ["Fado"],
+      "duracao": 228
+    },
+    {
+      "id": "fado_da_saudade_mus",
+      "nome": "Fado da Saudade",
+      "interpretadaPor": ["carminho"],
+      "pertenceAoAlbum": "fado_mae",
+      "generos": ["Fado"],
+      "duracao": 217
+    },
+    {
+      "id": "desfado_mus",
+      "nome": "Desfado",
+      "interpretadaPor": ["ana_moura"],
+      "pertenceAoAlbum": "ana_moura_desfado",
+      "generos": ["Fado"],
+      "duracao": 234
+    },
+    {
+      "id": "duende_gisela",
+      "nome": "Duende",
+      "interpretadaPor": ["gisela_joao"],
+      "pertenceAoAlbum": "gisela_gisela",
+      "generos": ["Fado"],
+      "duracao": 198
+    },
+    {
+      "id": "zambujo_alfama_mus",
+      "nome": "Alfama",
+      "interpretadaPor": ["antonio_zambujo"],
+      "pertenceAoAlbum": "zambujo_alfama",
+      "generos": ["Fado", "Pop"],
+      "duracao": 262
+    },
+    {
+      "id": "pica_do_sete",
+      "nome": "O Pica do Sete",
+      "interpretadaPor": ["antonio_zambujo"],
+      "generos": ["Fado", "Pop"],
+      "duracao": 215
+    },
+    {
+      "id": "grandola_mus",
+      "nome": "Grândola, Vila Morena",
+      "interpretadaPor": ["zeca_afonso"],
+      "pertenceAoAlbum": "grandola_alb",
+      "generos": ["Intervencao", "Folk"],
+      "duracao": 276,
+      "curiosidade": "Serviu de sinal para o início da Revolução dos Cravos a 25 de Abril de 1974."
+    },
+    {
+      "id": "vejam_bem_mus",
+      "nome": "Vejam Bem",
+      "interpretadaPor": ["zeca_afonso"],
+      "generos": ["Intervencao"],
+      "duracao": 195
+    },
+    {
+      "id": "menino_bairro_negro",
+      "nome": "Menino do Bairro Negro",
+      "interpretadaPor": ["zeca_afonso"],
+      "generos": ["Intervencao", "Folk"],
+      "duracao": 210
+    },
+    {
+      "id": "traz_outro_amigo",
+      "nome": "Traz Outro Amigo Também",
+      "interpretadaPor": ["zeca_afonso"],
+      "pertenceAoAlbum": "zeca_bancal_alb",
+      "generos": ["Intervencao", "Folk"],
+      "duracao": 183
+    },
+    {
+      "id": "primeiro_dia_mus",
+      "nome": "Primeiro Dia",
+      "interpretadaPor": ["sergio_godinho"],
+      "pertenceAoAlbum": "sergio_caminhante",
+      "generos": ["Intervencao"],
+      "duracao": 222
+    },
+    {
+      "id": "carvalhesa_mus",
+      "nome": "A Carvalhesa",
+      "interpretadaPor": ["adriano_correia"],
+      "generos": ["Intervencao"],
+      "duracao": 198
+    },
+    {
+      "id": "pintassilgo_mus",
+      "nome": "Como um Pintassilgo",
+      "interpretadaPor": ["zeca_afonso"],
+      "generos": ["Intervencao", "Folk"],
+      "duracao": 205
+    },
+    {
+      "id": "cancao_engate",
+      "nome": "Canção de Engate",
+      "interpretadaPor": ["antonio_variacoes"],
+      "pertenceAoAlbum": "anjo_da_guarda_alb",
+      "generos": ["Pop"],
+      "duracao": 188
+    },
+    {
+      "id": "estou_alem_mus",
+      "nome": "Estou Além",
+      "interpretadaPor": ["antonio_variacoes"],
+      "pertenceAoAlbum": "cafe_berlin_alb",
+      "generos": ["Pop", "Rock"],
+      "duracao": 215
+    },
+    {
+      "id": "corpo_e_que_paga_mus",
+      "nome": "O Corpo É Que Paga",
+      "interpretadaPor": ["antonio_variacoes"],
+      "generos": ["Pop"],
+      "duracao": 197
+    },
+    {
+      "id": "porto_sentido_mus",
+      "nome": "Porto Sentido",
+      "interpretadaPor": ["rui_veloso"],
+      "pertenceAoAlbum": "ar_de_rock_alb",
+      "generos": ["Rock"],
+      "duracao": 298,
+      "curiosidade": "Hino não oficial da cidade do Porto."
+    },
+    {
+      "id": "chico_fininho_mus",
+      "nome": "Chico Fininho",
+      "interpretadaPor": ["rui_veloso"],
+      "generos": ["Rock", "Blues"],
+      "duracao": 245
+    },
+    {
+      "id": "fragil_mus",
+      "nome": "Frágil",
+      "interpretadaPor": ["jorge_palma"],
+      "pertenceAoAlbum": "fragil_alb",
+      "generos": ["Rock"],
+      "duracao": 256
+    },
+    {
+      "id": "aprender_voar_mus",
+      "nome": "Aprender a Voar",
+      "interpretadaPor": ["jorge_palma"],
+      "pertenceAoAlbum": "cancoes_pos_guerra",
+      "generos": ["Rock"],
+      "duracao": 271
+    },
+    {
+      "id": "depois_adeus_mus",
+      "nome": "E Depois do Adeus",
+      "interpretadaPor": ["paulo_de_carvalho"],
+      "generos": ["Pop"],
+      "duracao": 183,
+      "curiosidade": "Sinal da Revolução dos Cravos em conjunto com Grândola Vila Morena."
+    },
+    {
+      "id": "playback_mus",
+      "nome": "Playback",
+      "interpretadaPor": ["carlos_paiao"],
+      "generos": ["Pop"],
+      "duracao": 201
+    },
+    {
+      "id": "cinderela_mus",
+      "nome": "Cinderela",
+      "interpretadaPor": ["carlos_paiao"],
+      "generos": ["Pop"],
+      "duracao": 195
+    },
+    {
+      "id": "contentores_mus",
+      "nome": "Contentores",
+      "interpretadaPor": ["xutos_pontapes"],
+      "pertenceAoAlbum": "xutos_cerco",
+      "generos": ["Rock"],
+      "duracao": 312
+    },
+    {
+      "id": "nao_sou_unico_mus",
+      "nome": "Não Sou o Único",
+      "interpretadaPor": ["xutos_pontapes"],
+      "pertenceAoAlbum": "xutos_cerco",
+      "generos": ["Rock"],
+      "duracao": 278
+    },
+    {
+      "id": "chuva_dissolvente_mus",
+      "nome": "Chuva Dissolvente",
+      "interpretadaPor": ["xutos_pontapes"],
+      "generos": ["Rock"],
+      "duracao": 265
+    },
+    {
+      "id": "deus_desconhecido_mus",
+      "nome": "A um Deus Desconhecido",
+      "interpretadaPor": ["setima_legiao"],
+      "pertenceAoAlbum": "a_um_deus_alb",
+      "generos": ["Pop"],
+      "duracao": 240
+    },
+    {
+      "id": "sete_mares_mus",
+      "nome": "Sete Mares",
+      "interpretadaPor": ["setima_legiao"],
+      "generos": ["Pop", "Rock"],
+      "duracao": 228
+    },
+    {
+      "id": "opium_mus",
+      "nome": "Opium",
+      "interpretadaPor": ["moonspell"],
+      "pertenceAoAlbum": "irreligious",
+      "generos": ["Rock", "Metal"],
+      "duracao": 325
+    },
+    {
+      "id": "wolfheart_mus",
+      "nome": "Wolfheart",
+      "interpretadaPor": ["moonspell"],
+      "pertenceAoAlbum": "wolfheart_alb",
+      "generos": ["Rock", "Metal"],
+      "duracao": 289
+    },
+    {
+      "id": "night_eternal_mus",
+      "nome": "Night Eternal",
+      "interpretadaPor": ["moonspell"],
+      "pertenceAoAlbum": "night_eternal_alb",
+      "generos": ["Rock", "Metal"],
+      "duracao": 301
+    },
+    {
+      "id": "ouvi_dizer_mus",
+      "nome": "Ouvi Dizer",
+      "interpretadaPor": ["ornatos_violeta"],
+      "pertenceAoAlbum": "ornatos_monstro",
+      "generos": ["Rock", "Indie"],
+      "duracao": 295
+    },
+    {
+      "id": "punk_macaco_mus",
+      "nome": "Punk Macaco",
+      "interpretadaPor": ["ornatos_violeta"],
+      "pertenceAoAlbum": "ornatos_cao",
+      "generos": ["Rock", "Indie"],
+      "duracao": 310
+    },
+    {
+      "id": "capitao_romance_mus",
+      "nome": "Capitão Romance",
+      "interpretadaPor": ["ornatos_violeta"],
+      "pertenceAoAlbum": "ornatos_monstro",
+      "generos": ["Rock", "Indie"],
+      "duracao": 267
+    },
+    {
+      "id": "chiclete_mus",
+      "nome": "Chiclete",
+      "interpretadaPor": ["taxi"],
+      "pertenceAoAlbum": "taxi_81",
+      "generos": ["Rock"],
+      "duracao": 223
+    },
+    {
+      "id": "cavalo_corrida_mus",
+      "nome": "Cavalo de Corrida",
+      "interpretadaPor": ["uhf"],
+      "pertenceAoAlbum": "madrugada_80",
+      "generos": ["Rock"],
+      "duracao": 248
+    },
+    {
+      "id": "lenda_elrei_mus",
+      "nome": "Lenda de El-Rei D. Sebastião",
+      "interpretadaPor": ["quarteto_1111"],
+      "pertenceAoAlbum": "album_1111",
+      "generos": ["Rock"],
+      "duracao": 275
+    },
+    {
+      "id": "paixao_mus",
+      "nome": "Paixão",
+      "interpretadaPor": ["herois_do_mar"],
+      "pertenceAoAlbum": "herois_mae",
+      "generos": ["Pop", "Rock"],
+      "duracao": 215
+    },
+    {
+      "id": "o_pastor_mus",
+      "nome": "O Pastor",
+      "interpretadaPor": ["madredeus"],
+      "pertenceAoAlbum": "madredeus_ainda",
+      "generos": ["Folk", "Indie"],
+      "duracao": 280,
+      "curiosidade": "Usada na banda sonora do filme 'Lisboa Story' de Wim Wenders."
+    },
+    {
+      "id": "o_mar_mus",
+      "nome": "O Mar",
+      "interpretadaPor": ["madredeus"],
+      "pertenceAoAlbum": "madredeus_o_espirito",
+      "generos": ["Folk", "Indie"],
+      "duracao": 245
+    },
+    {
+      "id": "parva_que_sou_mus",
+      "nome": "Parva que Sou",
+      "interpretadaPor": ["deolinda"],
+      "pertenceAoAlbum": "cancao_deolinda",
+      "generos": ["Pop", "Fado"],
+      "duracao": 233,
+      "curiosidade": "Tornou-se um hino da geração precária portuguesa."
+    },
+    {
+      "id": "a_estranheza_mus",
+      "nome": "A Estranheza",
+      "interpretadaPor": ["deolinda"],
+      "pertenceAoAlbum": "deolinda_dois",
+      "generos": ["Pop"],
+      "duracao": 219
+    },
+    {
+      "id": "driving_slow_mus",
+      "nome": "Driving You Slow",
+      "interpretadaPor": ["the_gift"],
+      "pertenceAoAlbum": "vinyl_album",
+      "generos": ["Pop", "Indie"],
+      "duracao": 248
+    },
+    {
+      "id": "amar_pelos_dois_mus",
+      "nome": "Amar Pelos Dois",
+      "interpretadaPor": ["salvador_sobral"],
+      "pertenceAoAlbum": "sobral_excuse_me",
+      "generos": ["Pop", "Jazz"],
+      "duracao": 185,
+      "compostaPor": ["luisa_sobral"],
+      "curiosidade": "Venceu o Festival Eurovisão 2017 com a maior margem de pontos da história."
+    },
+    {
+      "id": "como_tu_mus",
+      "nome": "Como Tu (feat. Ivandro)",
+      "interpretadaPor": ["barbara_bandeira", "ivandro"],
+      "pertenceAoAlbum": "barbara_finda_alb",
+      "generos": ["Pop"],
+      "duracao": 202
+    },
+    {
+      "id": "nos_os_dois_mus",
+      "nome": "Nós os Dois",
+      "interpretadaPor": ["barbara_bandeira"],
+      "generos": ["Pop"],
+      "duracao": 188
+    },
+    {
+      "id": "balance_mus",
+      "nome": "Balancê",
+      "interpretadaPor": ["sara_tavares"],
+      "pertenceAoAlbum": "sara_balance",
+      "generos": ["Pop", "RB", "Soul"],
+      "duracao": 265
+    },
+    {
+      "id": "where_heart_is_mus",
+      "nome": "Where x Heart Is",
+      "interpretadaPor": ["slow_j"],
+      "pertenceAoAlbum": "afro_fado_album",
+      "generos": ["HipHop", "Pop"],
+      "duracao": 238
+    },
+    {
+      "id": "roleta_russa_mus",
+      "nome": "Roleta Russa",
+      "interpretadaPor": ["valete"],
+      "pertenceAoAlbum": "servico_publico_alb",
+      "generos": ["HipHop"],
+      "duracao": 278
+    },
+    {
+      "id": "nossos_tempos_mus",
+      "nome": "Nossos Tempos",
+      "interpretadaPor": ["valete"],
+      "pertenceAoAlbum": "valete_educacao_alb",
+      "generos": ["HipHop"],
+      "duracao": 264
+    },
+    {
+      "id": "vayorken_mus",
+      "nome": "Vayorken",
+      "interpretadaPor": ["capicua"],
+      "pertenceAoAlbum": "capicua_sereia",
+      "generos": ["HipHop"],
+      "duracao": 255
+    },
+    {
+      "id": "kalemba_mus",
+      "nome": "Kalemba (Wegue Wegue)",
+      "interpretadaPor": ["buraka_som_sistema"],
+      "pertenceAoAlbum": "black_diamond_alb",
+      "generos": ["HipHop", "Electronica"],
+      "duracao": 302,
+      "curiosidade": "Tornou-se viral internacionalmente em 2008."
+    },
+    {
+      "id": "princesa_mus",
+      "nome": "Princesa (Beija-me Outra Vez)",
+      "interpretadaPor": ["boss_ac"],
+      "pertenceAoAlbum": "boss_ac_ritmo",
+      "generos": ["HipHop"],
+      "duracao": 245
+    },
+    {
+      "id": "danca_reggae_mus",
+      "nome": "Dança Reggae",
+      "interpretadaPor": ["kussondulola"],
+      "pertenceAoAlbum": "baza_baza_reggae",
+      "generos": ["Pop", "Reggae"],
+      "duracao": 239
+    },
+    {
+      "id": "garagem_vizinha_mus",
+      "nome": "A Garagem da Vizinha",
+      "interpretadaPor": ["quim_barreiros"],
+      "pertenceAoAlbum": "atento_album",
+      "generos": ["Pimba"],
+      "duracao": 205
+    },
+    {
+      "id": "mestre_culinario_mus",
+      "nome": "O Mestre de Culinária",
+      "interpretadaPor": ["quim_barreiros"],
+      "generos": ["Pimba"],
+      "duracao": 198
+    },
+    {
+      "id": "chama_antonio_mus",
+      "nome": "Chama o António",
+      "interpretadaPor": ["toy"],
+      "pertenceAoAlbum": "es_tao_sensual_alb",
+      "generos": ["Pimba"],
+      "duracao": 212
+    },
+    {
+      "id": "perfume_mulher_mus",
+      "nome": "Perfume de Mulher",
+      "interpretadaPor": ["agata"],
+      "pertenceAoAlbum": "perfume_mulher_alb",
+      "generos": ["Pimba"],
+      "duracao": 220
+    },
+    {
+      "id": "subtilezas_mus",
+      "nome": "Subtilezas de um Rapaz de Bairro",
+      "interpretadaPor": ["rui_veloso"],
+      "pertenceAoAlbum": "rui_mingo_alb",
+      "generos": ["Rock", "Indie"],
+      "duracao": 267
+    },
+    {
+      "id": "filhos_nacao_mus",
+      "nome": "Os Filhos da Nação",
+      "interpretadaPor": ["quinta_do_bill"],
+      "pertenceAoAlbum": "ganda_banda_alb",
+      "generos": ["Rock"],
+      "duracao": 243
+    },
+    {
+      "id": "sol_caparica_mus",
+      "nome": "Sol da Caparica",
+      "interpretadaPor": ["peste_sida"],
+      "pertenceAoAlbum": "portem_se_bem_alb",
+      "generos": ["Rock", "Indie"],
+      "duracao": 258
+    },
+    {
+      "id": "boa_memoria_mus",
+      "nome": "Boa Memória",
+      "interpretadaPor": ["capitao_fausto"],
+      "pertenceAoAlbum": "capitao_fausto_invencao",
+      "generos": ["Rock", "Indie"],
+      "duracao": 271
+    },
+    {
+      "id": "dino_mundu_mus",
+      "nome": "Mundu Nôbu",
+      "interpretadaPor": ["dino_d_santiago"],
+      "pertenceAoAlbum": "dino_santiago_mundu",
+      "generos": ["RB", "Kizomba", "Pop"],
+      "duracao": 249
+    }
+  ]
+}

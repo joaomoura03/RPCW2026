@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ musica.nome }} — Arquivo da Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .musica-hero {
+      background: linear-gradient(135deg, var(--surface2), var(--bg));
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .musica-icon {
+      width: 90px; height: 90px;
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; color: var(--cream);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+    .musica-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 700px) { .musica-grid { grid-template-columns: 1fr; } }
+    .info-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .info-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,150,58,0.15);
+      padding-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .pessoa-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--cream);
+      text-decoration: none;
+      margin: 0.2rem;
+      transition: border-color 0.2s;
+      font-size: 0.9rem;
+    }
+    .pessoa-link:hover { border-color: var(--gold); color: var(--gold-light); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <div class="musica-hero">
+      <div class="musica-icon">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <div>
+        <h1 style="font-family:'Playfair Display',serif; font-size:2.4rem; color:var(--cream); font-weight:900; line-height:1.2;">
+          {{ musica.nome }}
+        </h1>
+        <div style="margin-top:0.6rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          {% if musica.album %}
+            <a href="/album/{{ musica.album.id }}" class="badge badge-solo" style="text-decoration:none;">
+              <i class="fa-solid fa-compact-disc"></i> {{ musica.album.nome }}{% if musica.album.ano %} ({{ musica.album.ano }}){% endif %}
+            </a>
+          {% endif %}
+          {% for g in musica.generos %}
+            <span class="badge badge-solo" style="background:var(--surface2); border:1px solid var(--border);">{{ g.nome }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="musica-grid">
+
+      <div class="info-block">
+        <h3><i class="fa-solid fa-microphone"></i> Intérpretes</h3>
+        {% if musica.interpretes %}
+          {% for p in musica.interpretes %}
+            <a href="/artista/{{ p.id }}" class="pessoa-link">{{ p.nome }}</a>
+          {% endfor %}
+        {% else %}
+          <p style="color:var(--muted); font-size:0.9rem; font-style:italic;">Não registado.</p>
+        {% endif %}
+      </div>
+
+      <div class="info-block">
+        <h3><i class="fa-solid fa-users"></i> Colaborações (feats)</h3>
+        {% if musica.colaboracoes %}
+          {% for p in musica.colaboracoes %}
+            <a href="/artista/{{ p.id }}" class="pessoa-link">{{ p.nome }}</a>
+          {% endfor %}
+        {% else %}
+          <p style="color:var(--muted); font-size:0.9rem; font-style:italic;">Sem colaborações registadas.</p>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div style="margin-top:3rem; text-align:center; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      {% if musica.album %}
+        <a href="/album/{{ musica.album.id }}" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao álbum</a>
+      {% else %}
+        <a href="/" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao Índice Principal</a>
+      {% endif %}
+      <form method="POST" action="/musica/{{ musica.id }}/remover" style="display:inline;"
+            onsubmit="return confirm('Tens a certeza que queres remover esta musica? Esta accao remove permanentemente o registo. Nao pode ser desfeita.');">
+        <button type="submit" class="btn btn-ghost"
+                style="border-color: rgba(155,35,53,0.4); color: #ff5268;">
+          <i class="fa-solid fa-trash"></i> Remover Música
+        </button>
+      </form>
+    </div>
+
+  </main>
+</body>
+</html>

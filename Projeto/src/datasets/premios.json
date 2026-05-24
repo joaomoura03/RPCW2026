@@ -1,0 +1,84 @@
+{
+  "premios": [
+    {
+      "id": "eurovisao_2017",
+      "nome": "Eurovision Song Contest 2017",
+      "anoPremio": 2017,
+      "categoriaPremio": "Primeiro Lugar",
+      "entidadePremio": "European Broadcasting Union",
+      "ganhadoPor": "salvador_sobral"
+    },
+    {
+      "id": "globo_ouro_amalia",
+      "nome": "Globo de Ouro Carreira",
+      "anoPremio": 2019,
+      "categoriaPremio": "Carreira",
+      "entidadePremio": "Globos de Ouro (SIC)",
+      "ganhadoPor": "mariza"
+    },
+    {
+      "id": "order_merit_amalia",
+      "nome": "Ordem do Mérito (Grã-Cruz)",
+      "anoPremio": 1990,
+      "categoriaPremio": "Mérito Civil",
+      "entidadePremio": "Estado Português",
+      "ganhadoPor": "amalia_rodrigues"
+    },
+    {
+      "id": "premio_mpa_capicua",
+      "nome": "Prémio Música Portuguesa",
+      "anoPremio": 2015,
+      "categoriaPremio": "Hip-Hop",
+      "entidadePremio": "Associação Portuguesa de Editoras",
+      "ganhadoPor": "capicua"
+    },
+    {
+      "id": "premio_zdb_ornatos",
+      "nome": "Prémio ZDB",
+      "anoPremio": 2000,
+      "categoriaPremio": "Álbum do Ano",
+      "entidadePremio": "Zinc Discos",
+      "ganhadoPor": "ornatos_violeta"
+    },
+    {
+      "id": "world_music_mariza",
+      "nome": "BBC Radio 3 World Music Award",
+      "anoPremio": 2006,
+      "categoriaPremio": "Europe Award",
+      "entidadePremio": "BBC Radio 3",
+      "ganhadoPor": "mariza"
+    },
+    {
+      "id": "wma_ana_moura",
+      "nome": "BBC Radio 3 World Music Award",
+      "anoPremio": 2014,
+      "categoriaPremio": "Europe Award",
+      "entidadePremio": "BBC Radio 3",
+      "ganhadoPor": "ana_moura"
+    },
+    {
+      "id": "premio_carlos_paredes",
+      "nome": "Prémio Carlos Paredes",
+      "anoPremio": 2005,
+      "categoriaPremio": "Música",
+      "entidadePremio": "Câmara Municipal de Lisboa",
+      "ganhadoPor": "carminho"
+    },
+    {
+      "id": "globo_ouro_banda_deolinda",
+      "nome": "Globo de Ouro Melhor Banda",
+      "anoPremio": 2010,
+      "categoriaPremio": "Melhor Banda",
+      "entidadePremio": "Globos de Ouro (SIC)",
+      "ganhadoPor": "deolinda"
+    },
+    {
+      "id": "antena3_moonspell",
+      "nome": "Antena 3 Music Awards",
+      "anoPremio": 2012,
+      "categoriaPremio": "Melhor Banda Rock",
+      "entidadePremio": "Antena 3 / RTP",
+      "ganhadoPor": "moonspell"
+    }
+  ]
+}

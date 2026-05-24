@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estatísticas — Arquivo da Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .stats-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .stats-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(201,150,58,0.2);
+      padding-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 800px) { .stats-row { grid-template-columns: 1fr; } }
+    .chart-container { position: relative; height: 320px; }
+    .simple-table { width: 100%; border-collapse: collapse; }
+    .simple-table th {
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .simple-table td {
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      color: var(--cream);
+    }
+    .simple-table td:last-child {
+      text-align: right;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link active"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="page-hero">
+      <h1>Estatísticas do <em>Arquivo</em></h1>
+      <hr class="hero-rule">
+      <p>Análise quantitativa da música portuguesa registada na ontologia.</p>
+    </div>
+
+    <div class="stats-section">
+      <h3><i class="fa-solid fa-guitar"></i> Artistas por Género</h3>
+      {% if por_genero %}
+        <div class="chart-container"><canvas id="chartGenero"></canvas></div>
+      {% else %}
+        <p style="color: var(--muted); font-style: italic; text-align: center; padding: 2rem;">Sem dados disponíveis.</p>
+      {% endif %}
+    </div>
+
+    <div class="stats-row">
+
+      <div class="stats-section">
+        <h3><i class="fa-solid fa-building"></i> Editoras Maiores</h3>
+        {% if por_editora %}
+          <table class="simple-table">
+            <thead><tr><th>Editora</th><th>Artistas</th></tr></thead>
+            <tbody>
+              {% for e in por_editora %}
+              <tr><td>{{ e.editora }}</td><td>{{ e.total }}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p style="color: var(--muted); font-style: italic; text-align: center; padding: 2rem;">Sem dados disponíveis.</p>
+        {% endif %}
+      </div>
+
+      <div class="stats-section">
+        <h3><i class="fa-solid fa-gavel"></i> Prémios por Organização</h3>
+        {% if por_org %}
+          <table class="simple-table">
+            <thead><tr><th>Organização</th><th>Prémios</th></tr></thead>
+            <tbody>
+              {% for o in por_org %}
+              <tr><td>{{ o.org }}</td><td>{{ o.total }}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p style="color: var(--muted); font-style: italic; text-align: center; padding: 2rem;">Sem dados disponíveis.</p>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div style="margin-top:3rem; text-align:center;">
+      <a href="/" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao Catálogo</a>
+    </div>
+  </main>
+
+  <script>
+    // Paleta de cores consistente com o tema
+    const palette = [
+      '#c9963a', '#9b2335', '#e8b95a', '#5aa0ff',
+      '#4ade80', '#ff5268', '#a78bfa', '#fb923c',
+      '#22d3ee', '#f472b6'
+    ];
+
+    {% if por_genero %}
+    new Chart(document.getElementById('chartGenero'), {
+      type: 'doughnut',
+      data: {
+        labels: {{ por_genero | map(attribute='genero') | list | tojson }},
+        datasets: [{
+          data: {{ por_genero | map(attribute='total') | list | tojson }},
+          backgroundColor: palette,
+          borderColor: '#1a1410',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'right',
+            labels: { color: '#f0e6d3', font: { size: 11 } }
+          }
+        }
+      }
+    });
+    {% endif %}
+  </script>
+</body>
+</html>

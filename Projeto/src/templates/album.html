@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ album.nome }} — Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div style="text-align:center;padding:2rem 0">
+      <div style="width:100px;height:100px;margin:0 auto 1.5rem;background:linear-gradient(135deg,var(--red),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;box-shadow:0 6px 30px rgba(155,35,53,0.3)">
+        <i class="fa-solid fa-compact-disc" style="color:var(--cream);"></i>
+      </div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--cream);font-weight:900;">
+        {{ album.nome }}
+      </h1>
+    </div>
+
+    <div class="info-grid">
+      {% if album.artista %}
+      <div class="info-card">
+        <div class="label">Autor / Lançado Por</div>
+        <div class="value" style="margin-top:0.4rem;">
+          <a href="/artista/{{ album.artista.id }}" class="btn btn-ghost" style="width:100%; justify-content:center; color:var(--gold-light);"><i class="fa-solid fa-user-music"></i> {{ album.artista.nome }}</a>
+        </div>
+      </div>
+      {% endif %}
+      {% if album.ano %}
+      <div class="info-card">
+        <div class="label">Ano de Lançamento</div>
+        <div class="value">📅 {{ album.ano }}</div>
+      </div>
+      {% endif %}
+      {% if album.generos %}
+      <div class="info-card">
+        <div class="label">Classificação Geográfica / Géneros</div>
+        <div class="tags-wrap" style="margin-top:.4rem">
+          {% for g in album.generos %}
+            <span class="badge badge-solo" style="font-size:0.85rem;"><i class="fa-solid fa-tag"></i> {{ g.nome }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if album.musicas %}
+    <div class="section-divider"><span>Faixas Alinhadas Semanticamente ({{ album.musicas|length }})</span></div>
+    <div class="musica-list">
+      {% for m in album.musicas %}
+      <div class="musica-item">
+        <span>
+          <span style="color:var(--muted);margin-right:.6rem;font-size:.85rem;font-weight:bold;">{{ loop.index | string }}</span>
+          <i class="fa-solid fa-music" style="color:var(--gold); margin-right:0.4rem; font-size:0.85rem;"></i> 
+          
+          <a href="{{ url_for('detalhe_musica', id_musica=m.id) }}" style="color: var(--cream); text-decoration: none;">
+            {{ m.nome }}
+          </a>
+          
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="section-divider"><span>Faixas do Álbum</span></div>
+    <div class="empty-state" style="padding: 2rem;">
+      <p style="color: var(--muted); font-style: italic;">Nenhuma música registada neste álbum ainda.</p>
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 3rem; background: var(--surface); padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border);">
+      <h4 style="font-size:1.1rem; color:var(--gold-light); margin-bottom:1rem;"><i class="fa-solid fa-plus"></i> Adicionar Nova Faixa</h4>
+      <form method="POST" action="/musica/adicionar">
+        <input type="hidden" name="album_id" value="{{ album.id }}">
+        <input type="hidden" name="artista_id" value="{{ album.artista.id if album.artista else '' }}">
+        
+        <div style="display: grid; grid-template-columns: 2fr 1.5fr auto; gap: 1rem; align-items: start;">
+          <div class="form-group">
+            <input type="text" name="nome" placeholder="Nome da Faixa" class="form-control" style="height: 42px;" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Géneros Musicais</label>
+            <div class="genero-selector">
+              {% for g in generos_globais %}
+                <label>
+                  <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
+                  {{ g.nome }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="height: 42px; font-weight: bold;"><i class="fa-solid fa-save"></i> Guardar Faixa</button>
+        </div>
+      </form>
+    </div>
+
+    <div style="margin-top:4rem; text-align:center; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao Índice Principal</a>
+      <form method="POST" action="/album/{{ album.id }}/remover" style="display:inline;"
+            onsubmit="return confirm('Tens a certeza que queres remover este album? Esta accao remove permanentemente o registo. Nao pode ser desfeita.');">
+        <button type="submit" class="btn btn-ghost"
+                style="border-color: rgba(155,35,53,0.4); color: #ff5268;">
+          <i class="fa-solid fa-trash"></i> Remover Álbum
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,584 @@
+ 
+────────────────────────────────────────────────────────────────────────
+  S1 — Lista de fadistas
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Obter todos os artistas solo que cantam Fado, ordenados alfabeticamente.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?nome WHERE {
+  ?a a :ArtistaSolo ;
+     :pertenceAoGenero :Fado ;
+     :nome ?nome .
+} ORDER BY ?nome
+ 
+EXPLICAÇÃO
+A query procura instâncias que sejam simultaneamente da classe
+ArtistaSolo e que tenham uma relação :pertenceAoGenero com o
+indivíduo :Fado. Para cada uma, extrai o nome. O ORDER BY garante
+a ordenação alfabética.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  S2 — Álbuns por ordem cronológica
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Listar todos os álbuns juntamente com o seu ano de lançamento, do mais
+antigo para o mais recente.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?album ?ano WHERE {
+  ?a a :Album ;
+     :nome ?album ;
+     :anoLancamento ?ano .
+} ORDER BY ?ano
+ 
+EXPLICAÇÃO
+A query extrai três pedaços de informação para cada álbum: o seu
+identificador interno (?a, que não é retornado), o nome em string
+e o ano de lançamento como inteiro. A ordenação é feita pelo ano,
+ascendente.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  S3 — Contagem global de prémios
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Quantos prémios estão registados na base de conhecimento?
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT (COUNT(?p) AS ?total_premios) WHERE {
+  ?p a :Premio .
+}
+ 
+EXPLICAÇÃO
+Esta é a forma mais simples de agregação em SPARQL: contar todos os
+indivíduos da classe :Premio. Como não há GROUP BY, devolve uma
+única linha com o total.
+ 
+ 
+════════════════════════════════════════════════════════════════════════
+  PARTE II — QUERIES COMPLEXAS
+════════════════════════════════════════════════════════════════════════
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C1 — Distribuição de músicas por género
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Contar quantas músicas existem em cada género, ordenadas pelo género
+mais representado.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?genero (COUNT(?m) AS ?n_musicas) WHERE {
+  ?m a :Musica ;
+     :pertenceAoGenero ?g .
+  BIND(STRAFTER(STR(?g), "music-ontology/") AS ?genero)
+} GROUP BY ?genero
+  ORDER BY DESC(?n_musicas)
+ 
+EXPLICAÇÃO
+A query encontra todas as músicas e os seus géneros. Como os géneros
+são URIs (ex: http://rpcw.di.uminho.pt/2026/music-ontology/Fado), a
+função STRAFTER extrai apenas a parte final ("Fado"). BIND cria uma
+nova variável com esse valor curto, que é usado tanto na seleção
+como no agrupamento.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C2 — Discografia da Madredeus com músicas
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Listar todos os álbuns lançados pela Madredeus, e para cada álbum
+listar as suas músicas — mas mostrar também os álbuns para os quais
+não há músicas registadas no dataset.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?album ?ano ?musica WHERE {
+  :madredeus :lancouAlbum ?a .
+  ?a :nome ?album ;
+     :anoLancamento ?ano .
+  OPTIONAL {
+    ?a :contemMusica ?m .
+    ?m :nome ?musica .
+  }
+} ORDER BY ?ano
+ 
+EXPLICAÇÃO
+A parte OBRIGATÓRIA da query encontra os álbuns da Madredeus. A parte
+OPTIONAL tenta encontrar músicas dentro de cada álbum, mas se não
+houver, o álbum aparece na mesma com ?musica a valor nulo. Sem o
+OPTIONAL, um álbum sem músicas associadas seria excluído do resultado
+(é o comportamento normal do JOIN).
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C3 — Músicas de cada álbum (via propriedade inversa)
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Para cada álbum, listar as suas músicas. Mas há uma subtileza
+importante: nos dados afirmamos sempre que "música pertenceAoAlbum
+álbum", nunca o inverso.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?album ?musica WHERE {
+  ?a a :Album ;
+     :nome ?album ;
+     :contemMusica ?m .
+  ?m :nome ?musica .
+} ORDER BY ?album
+ 
+EXPLICAÇÃO
+A propriedade :contemMusica NÃO existe nos dados. Está declarada na
+ontologia como inversa de :pertenceAoAlbum (owl:inverseOf). O reasoner
+do GraphDB, ao processar a ontologia, MATERIALIZA automaticamente os
+triplos inversos — para cada triplo "música pertenceAoAlbum álbum",
+gera "álbum contemMusica música".
+ 
+Sem o reasoner ativo, esta query devolve resultados VAZIOS. Por isso
+é importante mencionar no relatório que o reasoner é fundamental.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C4 — Composições com compositor e letrista diferentes
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Encontrar músicas onde quem compôs a música NÃO foi quem escreveu a
+letra — é um indicador de colaboração compositor/letrista.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?musica ?compositor ?letrista WHERE {
+  ?m a :Musica ;
+     :nome ?musica ;
+     :compostaPor ?c ;
+     :escritaPor ?l .
+  ?c :nome ?compositor .
+  ?l :nome ?letrista .
+  FILTER (?c != ?l)
+}
+ 
+EXPLICAÇÃO
+A query pede explicitamente que a música tenha AMBOS compostaPor e
+escritaPor (mesmo se for o mesmo artista). O FILTER no fim verifica
+se as duas referências são para indivíduos diferentes, eliminando os
+casos em que a mesma pessoa fez letra e música.
+ 
+Este é o exemplo perfeito da dupla Rui Veloso / Carlos Tê — Rui Veloso
+compôs e Carlos Tê escreveu as letras das principais músicas dele.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C5 — Artistas multi-género
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Encontrar artistas solo que não se restringem a um só género, mas que
+têm afinidade com vários.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?artista (COUNT(?g) AS ?n_generos) WHERE {
+  ?a a :ArtistaSolo ;
+     :nome ?artista ;
+     :pertenceAoGenero ?g .
+} GROUP BY ?artista
+  HAVING (COUNT(?g) > 1)
+  ORDER BY DESC(?n_generos)
+ 
+EXPLICAÇÃO
+A query agrupa por artista e conta quantos géneros distintos cada um
+tem. A cláusula HAVING filtra apenas os que têm mais do que um — não
+é possível fazer isto com WHERE/FILTER, porque o filtro tem de ser
+sobre o resultado AGREGADO, não sobre os triplos individuais.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C6 — Influências de Amália Rodrigues (transitivas)
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Identificar todos os artistas que foram influenciados por Amália
+Rodrigues, direta ou indiretamente.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?artista WHERE {
+  ?a :influenciadoPor :amalia_rodrigues ;
+     :nome ?artista .
+} ORDER BY ?artista
+ 
+EXPLICAÇÃO
+A query parece trivial mas tem um detalhe semântico importante: a
+propriedade :influenciadoPor está declarada na ontologia como
+owl:TransitiveProperty. Isso significa que se afirmarmos:
+ 
+  Mariza   influenciadoPor  Amália
+  Carminho influenciadoPor  Mariza
+ 
+o reasoner INFERE automaticamente:
+ 
+  Carminho influenciadoPor  Amália
+ 
+A query devolve, portanto, não só as influências diretas mas também
+as cadeias transitivas. Sem o reasoner ativo, só veríamos as
+influências afirmadas diretamente.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C7 — Letristas puros
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Encontrar pessoas que escreveram letras de canções mas NUNCA
+interpretaram nenhuma música — i.e. são exclusivamente letristas.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?nome WHERE {
+  ?a :nome ?nome .
+  ?m :escritaPor ?a .
+  MINUS { ?m2 :interpretadaPor ?a }
+}
+ 
+EXPLICAÇÃO
+A query encontra todas as pessoas associadas a escritaPor (letras),
+e depois SUBTRAI as que aparecem em interpretadaPor. O resultado são
+as que só fazem letras.
+ 
+MINUS é diferente de FILTER NOT EXISTS na sintaxe mas tem efeito
+parecido neste caso. A diferença subtil é que MINUS opera sobre
+soluções já calculadas, enquanto FILTER NOT EXISTS opera sobre a
+existência de padrões.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C8 — Idade média dos membros das bandas
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Para cada banda, calcular a idade média dos seus membros (com base no
+ano de nascimento).
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?banda (ROUND(AVG(2025 - ?ano)) AS ?idade_media) WHERE {
+  ?b a :Banda ;
+     :nome ?banda ;
+     :temMembro ?membro .
+  ?membro :anoNascimento ?ano .
+} GROUP BY ?banda
+  ORDER BY ?idade_media
+ 
+EXPLICAÇÃO
+Para cada banda, a query percorre todos os membros (relação temMembro)
+e busca o ano de nascimento de cada um. A expressão (2025 - ?ano)
+calcula a idade aproximada. AVG calcula a média e ROUND arredonda.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C9 — Ranking de editoras
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Listar as editoras ordenadas pelo número de artistas (solo e bandas)
+que têm contratados.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?editora (COUNT(?a) AS ?n_artistas) WHERE {
+  ?a :pertenceAEditora ?e .
+  ?e :nome ?editora .
+} GROUP BY ?editora
+  ORDER BY DESC(?n_artistas)
+ 
+EXPLICAÇÃO
+A query é estruturalmente simples: para cada editora, conta quantos
+artistas têm aquela editora como :pertenceAEditora. Não distinguimos
+entre artistas solo e bandas — qualquer instância de Artista que
+tenha esta propriedade é contada.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C10 — Top de artistas mais premiados
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Ordenar os artistas pelo número de prémios recebidos, do mais
+premiado para o menos premiado.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?artista (COUNT(?p) AS ?n_premios) WHERE {
+  ?a :recebeuPremio ?p ;
+     :nome ?artista .
+} GROUP BY ?artista
+  ORDER BY DESC(?n_premios)
+ 
+EXPLICAÇÃO
+Para cada artista que recebeu pelo menos um prémio, conta-se quantos
+recebeu. Artistas sem prémios não aparecem (porque ?a :recebeuPremio
+?p é obrigatório — se quiséssemos incluir os que têm zero, teríamos
+de usar OPTIONAL).
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C11 — Concertos por década
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Agrupar os concertos por década (1990s, 2000s, 2010s, ...).
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?decada (COUNT(?c) AS ?n_concertos) WHERE {
+  ?c a :Concerto ;
+     :data ?data .
+  BIND(CONCAT(SUBSTR(?data, 1, 3), "0s") AS ?decada)
+} GROUP BY ?decada
+  ORDER BY ?decada
+ 
+EXPLICAÇÃO
+A propriedade :data dos concertos guarda uma string no formato
+ISO 8601 (ex: "2017-05-13"). SUBSTR extrai os primeiros 3 caracteres
+("201" para 2017). CONCAT junta esses 3 caracteres com "0s",
+produzindo "2010s". É um truque elegante para criar bins por década
+sem precisar de operações aritméticas em datas.
+
+
+────────────────────────────────────────────────────────────────────────
+  C12 — Pares de artistas da mesma editora
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Listar pares de artistas que partilham a mesma editora — útil para
+descobrir "famílias" de artistas e potenciais colaborações futuras.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?editora ?artista1 ?artista2 WHERE {
+  ?x1 :pertenceAEditora ?e ;
+      :nome ?artista1 .
+  ?x2 :pertenceAEditora ?e ;
+      :nome ?artista2 .
+  ?e :nome ?editora .
+  FILTER (STR(?x1) < STR(?x2))
+} ORDER BY ?editora ?artista1
+ 
+EXPLICAÇÃO
+O padrão fundamental é o SELF-JOIN: a mesma variável (?e) aparece
+referenciada por dois sujeitos distintos (?x1 e ?x2). Sem o FILTER,
+cada par apareceria duas vezes — (A, B) e (B, A) — e ainda incluiria
+auto-pares como (A, A). O filtro STR(?x1) < STR(?x2) elimina ambos
+os problemas em simultâneo: garante que ?x1 e ?x2 são distintos E
+que cada par só aparece numa direção (alfabética).
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C13 — Linha de tempo cronológica completa
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Construir uma timeline com todos os eventos da base de conhecimento:
+nascimentos de artistas, formação de bandas, lançamento de álbuns e
+atribuição de prémios — tudo ordenado cronologicamente.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?ano ?tipo ?nome WHERE {
+  { ?a a :ArtistaSolo ; :nome ?nome ; :anoNascimento ?ano .
+    BIND("Nascimento" AS ?tipo) }
+  UNION
+  { ?a a :Banda ; :nome ?nome ; :anoFormacao ?ano .
+    BIND("Formação banda" AS ?tipo) }
+  UNION
+  { ?a a :Album ; :nome ?nome ; :anoLancamento ?ano .
+    BIND("Álbum" AS ?tipo) }
+  UNION
+  { ?a a :Premio ; :nome ?nome ; :anoPremio ?ano .
+    BIND("Prémio" AS ?tipo) }
+} ORDER BY ?ano
+ 
+EXPLICAÇÃO
+UNION combina os resultados de quatro padrões diferentes num único
+conjunto. Cada padrão tipa o evento via BIND, criando uma coluna
+?tipo uniforme que diz se aquela linha é um nascimento, formação,
+álbum ou prémio. As variáveis ?nome e ?ano são comuns a todos os
+padrões, o que permite que sejam unificadas no SELECT.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C14 — Produção de cada artista (álbuns + músicas)
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Para cada artista, calcular quantos álbuns lançou E quantas músicas
+interpretou. Síntese da carreira em duas métricas.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?artista ?albuns ?musicas WHERE {
+  { ?a a :ArtistaSolo } UNION { ?a a :Banda }
+  ?a :nome ?artista .
+  {
+    SELECT ?a (COUNT(DISTINCT ?al) AS ?albuns) WHERE {
+      ?a :lancouAlbum ?al .
+    } GROUP BY ?a
+  }
+  {
+    SELECT ?a (COUNT(DISTINCT ?m) AS ?musicas) WHERE {
+      ?m :interpretadaPor ?a .
+    } GROUP BY ?a
+  }
+} ORDER BY DESC(?albuns) DESC(?musicas)
+ 
+EXPLICAÇÃO
+Esta query mostra o porquê das SUBQUERIES serem importantes. A
+tentação seria escrever:
+ 
+  SELECT ?artista (COUNT(?al) AS ?albuns) (COUNT(?m) AS ?musicas)
+  WHERE {
+    ?a :nome ?artista .
+    OPTIONAL { ?a :lancouAlbum ?al }
+    OPTIONAL { ?m :interpretadaPor ?a }
+  } GROUP BY ?artista
+ 
+Mas isto dá resultados ERRADOS. Quando há múltiplos álbuns E múltiplas
+músicas, os JOINs multiplicam-se: um artista com 3 álbuns e 10 músicas
+geraria 30 linhas, e os COUNTs ficariam inflacionados.
+ 
+A solução é calcular as duas contagens em subqueries SEPARADAS, e
+depois juntá-las pelo artista comum (?a). Cada subquery agrupa
+internamente, garantindo contagens correctas.
+ 
+ 
+────────────────────────────────────────────────────────────────────────
+  C15 — Colaborações em músicas (feats)
+────────────────────────────────────────────────────────────────────────
+ 
+OBJETIVO
+Listar as músicas com participações especiais (feats), distinguindo
+o intérprete principal do artista convidado.
+ 
+QUERY
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+SELECT ?musica ?principal ?feat WHERE {
+  ?m a :Musica ;
+     :nome ?musica ;
+     :interpretadaPor ?p ;
+     :temColaboracao ?f .
+  ?p :nome ?principal .
+  ?f :nome ?feat .
+}
+ 
+EXPLICAÇÃO
+A música tem duas relações com artistas:
+  :interpretadaPor — quem é o cantor principal (a "estrela" do tema)
+  :temColaboracao  — quem participou como convidado (o "feat.")
+ 
+A separação destas duas relações na ontologia permite distinguir
+semanticamente entre o autor da música e as suas colaborações,
+informação que num modelo simplificado poderia ficar misturada.

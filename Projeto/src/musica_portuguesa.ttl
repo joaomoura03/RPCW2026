@@ -1,0 +1,2080 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/music-ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://rpcw.di.uminho.pt/2026/music-ontology/> .
+
+<http://rpcw.di.uminho.pt/2026/music-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/compostaPor
+:compostaPor rdf:type owl:ObjectProperty ;
+             rdfs:domain :Musica ;
+             rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/contemMusica
+:contemMusica rdf:type owl:ObjectProperty ;
+              owl:inverseOf :pertenceAoAlbum .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/escritaPor
+:escritaPor rdf:type owl:ObjectProperty ;
+            rdfs:domain :Musica ;
+            rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/interpretadaPor
+:interpretadaPor rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :interpretou ;
+                 rdfs:domain :Musica ;
+                 rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/interpretou
+:interpretou rdf:type owl:ObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/lancouAlbum
+:lancouAlbum rdf:type owl:ObjectProperty ;
+             rdfs:domain :Artista ;
+             rdfs:range :Album .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/membroDe
+:membroDe rdf:type owl:ObjectProperty ;
+          owl:inverseOf :temMembro .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAEditora
+:pertenceAEditora rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Artista ;
+                  rdfs:range :Editora .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/foiLancadoPor
+:foiLancadoPor rdf:type owl:ObjectProperty ;
+               owl:inverseOf :lancouAlbum .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoAlbum
+:pertenceAoAlbum rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Musica ;
+                 rdfs:range :Album .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoGenero
+###  Propriedade genérica — usada por Musica, Album e Artista.
+###  Por isso NÃO declaramos rdfs:domain (qualquer indivíduo pode ter género).
+:pertenceAoGenero rdf:type owl:ObjectProperty ;
+                  rdfs:range :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/temMembro
+:temMembro rdf:type owl:ObjectProperty ;
+           rdfs:domain :Banda ;
+           rdfs:range :ArtistaSolo .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/recebeuPremio
+:recebeuPremio rdf:type owl:ObjectProperty ;
+               rdfs:domain :Artista ;
+               rdfs:range :Premio .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/atuouEm
+:atuouEm rdf:type owl:ObjectProperty ;
+         rdfs:domain :Artista ;
+         rdfs:range :Concerto .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/influenciadoPor
+:influenciadoPor rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+                 rdfs:domain :Artista ;
+                 rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/temColaboracao
+:temColaboracao rdf:type owl:ObjectProperty ;
+                rdfs:domain :Musica ;
+                rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/realizouTour
+:realizouTour rdf:type owl:ObjectProperty ;
+              rdfs:domain :Artista ;
+              rdfs:range :Tour .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/anoFormacao
+:anoFormacao rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Banda ;
+             rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/anoLancamento
+:anoLancamento rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Album ;
+               rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/anoNascimento
+:anoNascimento rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ArtistaSolo ;
+               rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/nome
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain owl:Thing ;
+      rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/anoPremio
+:anoPremio rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Premio ;
+           rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/categoria
+:categoria rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Premio ;
+           rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/organizacao
+:organizacao rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Premio ;
+             rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/local
+:local rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Concerto ;
+       rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/data
+:data rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Concerto ;
+      rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/biografia
+:biografia rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Artista ;
+           rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Album
+:Album rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Artista
+:Artista rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/ArtistaSolo
+:ArtistaSolo rdf:type owl:Class ;
+             rdfs:subClassOf :Artista ;
+             owl:disjointWith :Banda .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Banda
+:Banda rdf:type owl:Class ;
+       rdfs:subClassOf :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Editora
+:Editora rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Genero
+:Genero rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Musica
+:Musica rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Premio
+:Premio rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Concerto
+:Concerto rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Tour
+:Tour rdf:type owl:Class .
+
+
+# Subclasses de Género (Vocabulário Controlado)
+:Blues        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Electronica  rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Fado         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Folk         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:HipHop       rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Indie        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Intervencao  rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Jazz         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Kizomba      rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Metal        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Pimba        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Pop          rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:RB           rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Reggae       rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Rock         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Soul         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Tradicional  rdf:type owl:Class ; rdfs:subClassOf :Genero .
+
+#################################################################
+#    INDIVÍDUOS INTEGRADOS E MAPEADOS
+#################################################################
+
+
+#################################################################
+#    Editoras
+#################################################################
+
+:valentim_de_carvalho a :Editora ;
+    :nome "Valentim de Carvalho" .
+
+:edisco a :Editora ;
+    :nome "Edisco" .
+
+:emi_portugal a :Editora ;
+    :nome "EMI Portugal" .
+
+:universal_pt a :Editora ;
+    :nome "Universal Music Portugal" .
+
+:sony_pt a :Editora ;
+    :nome "Sony Music Portugal" .
+
+:transformadores a :Editora ;
+    :nome "Transformadores Discos" .
+
+:edicoes_orfeu a :Editora ;
+    :nome "Edições Orfeu" .
+
+:ovacao a :Editora ;
+    :nome "Ovação Records" .
+
+:polygram a :Editora ;
+    :nome "PolyGram Portugal" .
+
+:zona_musica a :Editora ;
+    :nome "Zona Música" .
+
+
+#################################################################
+#    Prémios
+#################################################################
+
+:eurovisao_2017 a :Premio ;
+    :nome "Eurovision Song Contest 2017" ;
+    :categoria "Primeiro Lugar" ;
+    :organizacao "European Broadcasting Union" ;
+    :anoPremio 2017 .
+
+:globo_ouro_amalia a :Premio ;
+    :nome "Globo de Ouro Carreira" ;
+    :categoria "Carreira" ;
+    :organizacao "Globos de Ouro (SIC)" ;
+    :anoPremio 2019 .
+
+:order_merit_amalia a :Premio ;
+    :nome "Ordem do Mérito (Grã-Cruz)" ;
+    :categoria "Mérito Civil" ;
+    :organizacao "Estado Português" ;
+    :anoPremio 1990 .
+
+:premio_mpa_capicua a :Premio ;
+    :nome "Prémio Música Portuguesa" ;
+    :categoria "Hip-Hop" ;
+    :organizacao "Associação Portuguesa de Editoras" ;
+    :anoPremio 2015 .
+
+:premio_zdb_ornatos a :Premio ;
+    :nome "Prémio ZDB" ;
+    :categoria "Álbum do Ano" ;
+    :organizacao "Zinc Discos" ;
+    :anoPremio 2000 .
+
+:world_music_mariza a :Premio ;
+    :nome "BBC Radio 3 World Music Award" ;
+    :categoria "Europe Award" ;
+    :organizacao "BBC Radio 3" ;
+    :anoPremio 2006 .
+
+:wma_ana_moura a :Premio ;
+    :nome "BBC Radio 3 World Music Award" ;
+    :categoria "Europe Award" ;
+    :organizacao "BBC Radio 3" ;
+    :anoPremio 2014 .
+
+:premio_carlos_paredes a :Premio ;
+    :nome "Prémio Carlos Paredes" ;
+    :categoria "Música" ;
+    :organizacao "Câmara Municipal de Lisboa" ;
+    :anoPremio 2005 .
+
+:globo_ouro_banda_deolinda a :Premio ;
+    :nome "Globo de Ouro Melhor Banda" ;
+    :categoria "Melhor Banda" ;
+    :organizacao "Globos de Ouro (SIC)" ;
+    :anoPremio 2010 .
+
+:antena3_moonspell a :Premio ;
+    :nome "Antena 3 Music Awards" ;
+    :categoria "Melhor Banda Rock" ;
+    :organizacao "Antena 3 / RTP" ;
+    :anoPremio 2012 .
+
+
+#################################################################
+#    Concertos
+#################################################################
+
+:amalia_carnegie_1952 a :Concerto ;
+    :nome "Amália no Carnegie Hall" ;
+    :local "Carnegie Hall" ;
+    :data "1952-01-15" .
+
+:mariza_coliseu_2004 a :Concerto ;
+    :nome "Mariza — Coliseu dos Recreios" ;
+    :local "Coliseu dos Recreios" ;
+    :data "2004-03-20" .
+
+:ana_moura_royal_albert a :Concerto ;
+    :nome "Ana Moura — Royal Albert Hall" ;
+    :local "Royal Albert Hall" ;
+    :data "2013-11-12" .
+
+:sobral_eurovisao_2017 a :Concerto ;
+    :nome "Salvador Sobral — Eurovision 2017" ;
+    :local "Kiev Arena" ;
+    :data "2017-05-13" .
+
+:zeca_coliseu_1983 a :Concerto ;
+    :nome "Zeca Afonso — Coliseu" ;
+    :local "Coliseu dos Recreios" ;
+    :data "1983-04-25" .
+
+:moonspell_rock_in_rio a :Concerto ;
+    :nome "Moonspell — Rock in Rio Lisboa" ;
+    :local "Parque da Bela Vista" ;
+    :data "2006-06-02" .
+
+:xutos_estadio_luz_2016 a :Concerto ;
+    :nome "Xutos — Estádio da Luz" ;
+    :local "Estádio da Luz" ;
+    :data "2016-07-09" .
+
+:ornatos_coliseu_2002 a :Concerto ;
+    :nome "Ornatos Violeta — Despedida" ;
+    :local "Coliseu do Porto" ;
+    :data "2002-07-20" .
+
+:deolinda_novas_doc a :Concerto ;
+    :nome "Deolinda — Campo Pequeno" ;
+    :local "Campo Pequeno" ;
+    :data "2011-04-13" .
+
+:capicua_porto_2015 a :Concerto ;
+    :nome "Capicua — Casa da Música" ;
+    :local "Casa da Música" ;
+    :data "2015-09-18" .
+
+
+#################################################################
+#    Tours
+#################################################################
+
+:mariza_world_2005 a :Tour ;
+    :nome "Mariza World Tour 2005" .
+:mariza :realizouTour :mariza_world_2005 .
+
+:sobral_tour_2017 a :Tour ;
+    :nome "Amar Pelos Dois — European Tour" .
+:salvador_sobral :realizouTour :sobral_tour_2017 .
+
+:moonspell_tour_2006 a :Tour ;
+    :nome "Memorial Tour 2006" .
+:moonspell :realizouTour :moonspell_tour_2006 .
+
+
+#################################################################
+#    Artistas Solo
+#################################################################
+
+:amalia_rodrigues a :ArtistaSolo ;
+    :nome "Amália Rodrigues" ;
+    :anoNascimento 1920 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "A voz mais emblemática do fado português, conhecida mundialmente como a Rainha do Fado." ;
+    :pertenceAoGenero :Fado .
+:amalia_rodrigues :recebeuPremio :order_merit_amalia .
+:amalia_rodrigues :atuouEm :amalia_carnegie_1952 .
+
+:carlos_do_carmo a :ArtistaSolo ;
+    :nome "Carlos do Carmo" ;
+    :anoNascimento 1939 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "Um dos maiores nomes do fado moderno, filho da fadista Lucília do Carmo." ;
+    :pertenceAoGenero :Fado .
+
+:fernando_mauricio a :ArtistaSolo ;
+    :nome "Fernando Maurício" ;
+    :anoNascimento 1933 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:alfredo_marceneiro a :ArtistaSolo ;
+    :nome "Alfredo Marceneiro" ;
+    :anoNascimento 1891 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:lucilia_do_carmo a :ArtistaSolo ;
+    :nome "Lucília do Carmo" ;
+    :anoNascimento 1903 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:luiz_goes a :ArtistaSolo ;
+    :nome "Luiz Goes" ;
+    :anoNascimento 1933 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:mariza a :ArtistaSolo ;
+    :nome "Mariza" ;
+    :anoNascimento 1973 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Fadista nascida em Moçambique que se tornou uma das maiores embaixadoras do fado no mundo." ;
+    :pertenceAoGenero :Fado .
+:mariza :recebeuPremio :globo_ouro_amalia .
+:mariza :recebeuPremio :world_music_mariza .
+:mariza :atuouEm :mariza_coliseu_2004 .
+:mariza :influenciadoPor :amalia_rodrigues .
+
+:camane a :ArtistaSolo ;
+    :nome "Camané" ;
+    :anoNascimento 1967 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Fado .
+
+:ana_moura a :ArtistaSolo ;
+    :nome "Ana Moura" ;
+    :anoNascimento 1979 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Fadista que colaborou com os Rolling Stones e Prince, levando o fado a novas audiências." ;
+    :pertenceAoGenero :Fado .
+:ana_moura :recebeuPremio :wma_ana_moura .
+:ana_moura :atuouEm :ana_moura_royal_albert .
+:ana_moura :influenciadoPor :amalia_rodrigues .
+
+:carminho a :ArtistaSolo ;
+    :nome "Carminho" ;
+    :anoNascimento 1984 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Fado .
+:carminho :recebeuPremio :premio_carlos_paredes .
+:carminho :influenciadoPor :amalia_rodrigues .
+
+:gisela_joao a :ArtistaSolo ;
+    :nome "Gisela João" ;
+    :anoNascimento 1983 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Fado .
+:gisela_joao :influenciadoPor :amalia_rodrigues .
+
+:ricardo_ribeiro a :ArtistaSolo ;
+    :nome "Ricardo Ribeiro" ;
+    :anoNascimento 1981 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:antonio_zambujo a :ArtistaSolo ;
+    :nome "António Zambujo" ;
+    :anoNascimento 1975 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Alentejano que mistura fado com cante alentejano e música brasileira." ;
+    :pertenceAoGenero :Fado ;
+    :pertenceAoGenero :Pop .
+:antonio_zambujo :influenciadoPor :carlos_do_carmo .
+
+:katia_guerreiro a :ArtistaSolo ;
+    :nome "Kátia Guerreiro" ;
+    :anoNascimento 1974 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Fado .
+
+:mafalda_arnauth a :ArtistaSolo ;
+    :nome "Mafalda Arnauth" ;
+    :anoNascimento 1974 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Fado .
+
+:miguel_povoas a :ArtistaSolo ;
+    :nome "Miguel Póvoas" ;
+    :anoNascimento 1978 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:raul_nery a :ArtistaSolo ;
+    :nome "Raúl Nery" ;
+    :anoNascimento 1932 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "Guitarrista português que acompanhou Amália Rodrigues durante décadas." ;
+    :pertenceAoGenero :Fado ;
+    :pertenceAoGenero :Tradicional .
+
+:antonio_variacoes a :ArtistaSolo ;
+    :nome "António Variações" ;
+    :anoNascimento 1944 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "Barbeiro de profissão que se tornou um dos maiores ícones do pop-rock português." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:jorge_palma a :ArtistaSolo ;
+    :nome "Jorge Palma" ;
+    :anoNascimento 1950 ;
+    :pertenceAEditora :emi_portugal ;
+    :biografia "Cantor, compositor e pianista, um dos pilares do rock português." ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Pop .
+:jorge_palma :influenciadoPor :rui_veloso .
+
+:manel_cruz a :ArtistaSolo ;
+    :nome "Manel Cruz" ;
+    :anoNascimento 1975 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:lena_d_agua a :ArtistaSolo ;
+    :nome "Lena d'Água" ;
+    :anoNascimento 1956 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:paulo_de_carvalho a :ArtistaSolo ;
+    :nome "Paulo de Carvalho" ;
+    :anoNascimento 1947 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Fado .
+
+:carlos_paiao a :ArtistaSolo ;
+    :nome "Carlos Paião" ;
+    :anoNascimento 1957 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop .
+
+:rui_veloso a :ArtistaSolo ;
+    :nome "Rui Veloso" ;
+    :anoNascimento 1956 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "O padrinho do rock em português, autor de Porto Sentido." ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Blues .
+
+:xana_toc_toc a :ArtistaSolo ;
+    :nome "Xana" ;
+    :anoNascimento 1963 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop .
+
+:fernando_ribeiro a :ArtistaSolo ;
+    :nome "Fernando Ribeiro" ;
+    :anoNascimento 1974 ;
+    :biografia "Vocalista dos Moonspell, a banda de metal mais importante de Portugal." ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+
+:tomas_wallenstein a :ArtistaSolo ;
+    :nome "Tomás Wallenstein" ;
+    :anoNascimento 1989 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Indie .
+
+:rodrigo_leao a :ArtistaSolo ;
+    :nome "Rodrigo Leão" ;
+    :anoNascimento 1964 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Músico e compositor, ex-membro da Sétima Legião e dos Madredeus." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Indie .
+
+:pedro_ayres_magalhaes a :ArtistaSolo ;
+    :nome "Pedro Ayres Magalhães" ;
+    :anoNascimento 1956 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:teresa_salgueiro a :ArtistaSolo ;
+    :nome "Teresa Salgueiro" ;
+    :anoNascimento 1969 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Voz original dos Madredeus, conhecida pela sua voz inconfundível." ;
+    :pertenceAoGenero :Indie ;
+    :pertenceAoGenero :Folk .
+
+:pedro_abrunhosa a :ArtistaSolo ;
+    :nome "Pedro Abrunhosa" ;
+    :anoNascimento 1960 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Cantor e compositor portuense com forte influência do jazz." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Jazz .
+
+:barbara_bandeira a :ArtistaSolo ;
+    :nome "Bárbara Bandeira" ;
+    :anoNascimento 2001 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "A artista portuguesa mais ouvida em streaming da sua geração." ;
+    :pertenceAoGenero :Pop .
+:barbara_bandeira :influenciadoPor :antonio_variacoes .
+
+:salvador_sobral a :ArtistaSolo ;
+    :nome "Salvador Sobral" ;
+    :anoNascimento 1989 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "Vencedor do Festival Eurovisão 2017 com 'Amar Pelos Dois'." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Jazz .
+:salvador_sobral :recebeuPremio :eurovisao_2017 .
+:salvador_sobral :atuouEm :sobral_eurovisao_2017 .
+
+:luisa_sobral a :ArtistaSolo ;
+    :nome "Luísa Sobral" ;
+    :anoNascimento 1987 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "Compositora e cantora, irmã de Salvador Sobral, autora de 'Amar Pelos Dois'." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Jazz .
+
+:mariza_liz a :ArtistaSolo ;
+    :nome "Marisa Liz" ;
+    :anoNascimento 1982 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:rita_redshoes a :ArtistaSolo ;
+    :nome "Rita Redshoes" ;
+    :anoNascimento 1981 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Indie .
+
+:carolina_deslandes a :ArtistaSolo ;
+    :nome "Carolina Deslandes" ;
+    :anoNascimento 1991 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop .
+
+:barbara_tinoco a :ArtistaSolo ;
+    :nome "Bárbara Tinoco" ;
+    :anoNascimento 1998 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop .
+
+:buba_espinho a :ArtistaSolo ;
+    :nome "Buba Espinho" ;
+    :anoNascimento 1995 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Soul .
+
+:ivandro a :ArtistaSolo ;
+    :nome "Ivandro" ;
+    :anoNascimento 1998 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :RB .
+
+:dino_d_santiago a :ArtistaSolo ;
+    :nome "Dino D'Santiago" ;
+    :anoNascimento 1982 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Músico cabo-verdiano radicado em Portugal, mistura kizomba, soul e pop." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :RB ;
+    :pertenceAoGenero :Kizomba .
+
+:ana_bacalhau a :ArtistaSolo ;
+    :nome "Ana Bacalhau" ;
+    :anoNascimento 1978 ;
+    :biografia "Vocalista dos Deolinda, conhecida pela voz característica e letras poéticas." ;
+    :pertenceAoGenero :Pop .
+
+:david_fonseca a :ArtistaSolo ;
+    :nome "David Fonseca" ;
+    :anoNascimento 1976 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Indie .
+
+:m_fontes a :ArtistaSolo ;
+    :nome "M. Fontes" ;
+    :anoNascimento 1987 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :Pop .
+
+:ana_free a :ArtistaSolo ;
+    :nome "Ana Free" ;
+    :anoNascimento 1987 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Soul .
+
+:sara_tavares a :ArtistaSolo ;
+    :nome "Sara Tavares" ;
+    :anoNascimento 1978 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Cantora e guitarrista com forte influência africana e soul." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :RB ;
+    :pertenceAoGenero :Soul .
+
+:seu_jorge_pt a :ArtistaSolo ;
+    :nome "Zé Manel Focinho" ;
+    :anoNascimento 1972 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Soul .
+
+:diogo_piçarra a :ArtistaSolo ;
+    :nome "Diogo Piçarra" ;
+    :anoNascimento 1994 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Artista pop do Algarve com grande popularidade nas redes sociais." ;
+    :pertenceAoGenero :Pop .
+
+:carlao a :ArtistaSolo ;
+    :nome "Carlão" ;
+    :anoNascimento 1980 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Soul .
+
+:slow_j a :ArtistaSolo ;
+    :nome "Slow J" ;
+    :anoNascimento 1992 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "João Coelho, produtor e rapper que mistura hip-hop com fado e música africana." ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :Pop .
+:slow_j :influenciadoPor :buraka_som_sistema .
+
+:valete a :ArtistaSolo ;
+    :nome "Valete" ;
+    :anoNascimento 1981 ;
+    :pertenceAEditora :edisco ;
+    :biografia "Um dos rappers mais letrados do hip-hop português, com letras de intervenção social." ;
+    :pertenceAoGenero :HipHop .
+:valete :influenciadoPor :boss_ac .
+
+:profjam a :ArtistaSolo ;
+    :nome "ProfJam" ;
+    :anoNascimento 1991 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop .
+
+:bispo a :ArtistaSolo ;
+    :nome "Bispo" ;
+    :anoNascimento 1992 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop .
+
+:t_rex_pt a :ArtistaSolo ;
+    :nome "T-Rex" ;
+    :anoNascimento 1997 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :RB .
+
+:plutonio a :ArtistaSolo ;
+    :nome "Plutónio" ;
+    :anoNascimento 1985 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :RB .
+
+:chullage a :ArtistaSolo ;
+    :nome "Chullage" ;
+    :anoNascimento 1977 ;
+    :pertenceAEditora :edisco ;
+    :biografia "Pioneiro do hip-hop de intervenção política em Portugal." ;
+    :pertenceAoGenero :HipHop .
+
+:capicua a :ArtistaSolo ;
+    :nome "Capicua" ;
+    :anoNascimento 1982 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Uma das rappers mais aclamadas do hip-hop português, com letras feministas e poéticas." ;
+    :pertenceAoGenero :HipHop .
+:capicua :recebeuPremio :premio_mpa_capicua .
+:capicua :atuouEm :capicua_porto_2015 .
+:capicua :influenciadoPor :boss_ac .
+
+:dj_ride a :ArtistaSolo ;
+    :nome "DJ Ride" ;
+    :anoNascimento 1976 ;
+    :pertenceAEditora :edisco ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :Electronica .
+
+:boss_ac a :ArtistaSolo ;
+    :nome "Boss AC" ;
+    :anoNascimento 1975 ;
+    :pertenceAEditora :edisco ;
+    :biografia "Um dos pioneiros do hip-hop português, ativo desde os anos 90." ;
+    :pertenceAoGenero :HipHop .
+
+:dealema a :ArtistaSolo ;
+    :nome "Dealema" ;
+    :anoNascimento 1987 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop .
+
+:dillaz a :ArtistaSolo ;
+    :nome "Dillaz" ;
+    :anoNascimento 1988 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :HipHop .
+
+:agir a :ArtistaSolo ;
+    :nome "Agir" ;
+    :anoNascimento 1990 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Cantor de reggaeton e pop que dominou os tops portugueses no início dos anos 2010." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :RB .
+
+:zeca_afonso a :ArtistaSolo ;
+    :nome "Zeca Afonso" ;
+    :anoNascimento 1929 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :biografia "O mais importante cantor de intervenção português, autor de Grândola Vila Morena." ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+:zeca_afonso :atuouEm :zeca_coliseu_1983 .
+
+:adriano_correia a :ArtistaSolo ;
+    :nome "Adriano Correia de Oliveira" ;
+    :anoNascimento 1942 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :pertenceAoGenero :Intervencao .
+:adriano_correia :influenciadoPor :zeca_afonso .
+
+:vitorino a :ArtistaSolo ;
+    :nome "Vitorino Salomé" ;
+    :anoNascimento 1942 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+
+:janita_salome a :ArtistaSolo ;
+    :nome "Janita Salomé" ;
+    :anoNascimento 1947 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :pertenceAoGenero :Intervencao .
+
+:luisa_basto a :ArtistaSolo ;
+    :nome "Luísa Basto" ;
+    :anoNascimento 1947 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :pertenceAoGenero :Intervencao .
+
+:sergio_godinho a :ArtistaSolo ;
+    :nome "Sérgio Godinho" ;
+    :anoNascimento 1945 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :biografia "Poeta e cantor, um dos mais importantes da geração de Abril." ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Pop .
+:sergio_godinho :influenciadoPor :zeca_afonso .
+
+:fausto a :ArtistaSolo ;
+    :nome "Fausto" ;
+    :anoNascimento 1948 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+
+:jose_mario_branco a :ArtistaSolo ;
+    :nome "José Mário Branco" ;
+    :anoNascimento 1942 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :biografia "Compositor, produtor e cantor, uma das figuras centrais da música de intervenção." ;
+    :pertenceAoGenero :Intervencao .
+
+:quim_barreiros a :ArtistaSolo ;
+    :nome "Quim Barreiros" ;
+    :anoNascimento 1951 ;
+    :pertenceAEditora :ovacao ;
+    :biografia "O rei do pimba, famoso pelas letras picantes e pela Garagem da Vizinha." ;
+    :pertenceAoGenero :Pimba .
+
+:toy a :ArtistaSolo ;
+    :nome "Toy" ;
+    :anoNascimento 1963 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pimba .
+
+:agata a :ArtistaSolo ;
+    :nome "Ágata" ;
+    :anoNascimento 1959 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pimba .
+
+:marante a :ArtistaSolo ;
+    :nome "Marante" ;
+    :anoNascimento 1956 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pimba .
+
+:ruth_marlene a :ArtistaSolo ;
+    :nome "Ruth Marlene" ;
+    :anoNascimento 1978 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pimba .
+
+:zeca_medeiros a :ArtistaSolo ;
+    :nome "Zeca Medeiros" ;
+    :anoNascimento 1948 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pimba .
+
+
+#################################################################
+#    Bandas
+#################################################################
+
+:quarteto_1111 a :Banda ;
+    :nome "Quarteto 1111" ;
+    :anoFormacao 1967 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Pop .
+
+:sheiks a :Banda ;
+    :nome "Os Sheiks" ;
+    :anoFormacao 1963 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock ;
+    :temMembro :paulo_de_carvalho .
+
+:taxi a :Banda ;
+    :nome "Táxi" ;
+    :anoFormacao 1979 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Rock .
+
+:uhf a :Banda ;
+    :nome "UHF" ;
+    :anoFormacao 1978 ;
+    :pertenceAEditora :edisco ;
+    :pertenceAoGenero :Rock .
+
+:radio_macau a :Banda ;
+    :nome "Rádio Macau" ;
+    :anoFormacao 1983 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:setima_legiao a :Banda ;
+    :nome "Sétima Legião" ;
+    :anoFormacao 1982 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :biografia "Banda emblemática do rock português dos anos 80." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock ;
+    :temMembro :rodrigo_leao ;
+    :temMembro :pedro_ayres_magalhaes .
+
+:xutos_pontapes a :Banda ;
+    :nome "Xutos & Pontapés" ;
+    :anoFormacao 1978 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "A mais longeva banda de rock português, activa desde 1978." ;
+    :pertenceAoGenero :Rock .
+:xutos_pontapes :atuouEm :xutos_estadio_luz_2016 .
+
+:rui_veloso_banda a :Banda ;
+    :nome "Rui Veloso e Banda" ;
+    :anoFormacao 1980 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Blues ;
+    :temMembro :rui_veloso .
+
+:herois_do_mar a :Banda ;
+    :nome "Heróis do Mar" ;
+    :anoFormacao 1981 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:ex_votos a :Banda ;
+    :nome "Os Ex-Votos" ;
+    :anoFormacao 1989 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:mao_morta a :Banda ;
+    :nome "Mão Morta" ;
+    :anoFormacao 1984 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:quinta_do_bill a :Banda ;
+    :nome "Quinta do Bill" ;
+    :anoFormacao 1987 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Rock .
+
+:peste_sida a :Banda ;
+    :nome "Peste & Sida" ;
+    :anoFormacao 1986 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:trabalhadores_mar a :Banda ;
+    :nome "Trabalhadores do Mar" ;
+    :anoFormacao 1987 ;
+    :pertenceAEditora :polygram ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:cla a :Banda ;
+    :nome "Clã" ;
+    :anoFormacao 1996 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:ornatos_violeta a :Banda ;
+    :nome "Ornatos Violeta" ;
+    :anoFormacao 1991 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Banda de rock alternativo do Porto, considerada um dos maiores projetos do rock português." ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie ;
+    :temMembro :manel_cruz .
+:ornatos_violeta :recebeuPremio :premio_zdb_ornatos .
+:ornatos_violeta :atuouEm :ornatos_coliseu_2002 .
+:ornatos_violeta :influenciadoPor :rui_veloso .
+
+:linda_martini a :Banda ;
+    :nome "Linda Martini" ;
+    :anoFormacao 2003 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+:linda_martini :influenciadoPor :ornatos_violeta .
+
+:moonspell a :Banda ;
+    :nome "Moonspell" ;
+    :anoFormacao 1992 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "A banda de metal português com maior projeção internacional." ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal ;
+    :temMembro :fernando_ribeiro .
+:moonspell :recebeuPremio :antena3_moonspell .
+:moonspell :atuouEm :moonspell_rock_in_rio .
+
+:capitao_fausto a :Banda ;
+    :nome "Capitão Fausto" ;
+    :anoFormacao 2009 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Banda de rock indie de Lisboa com forte influência da cena independente." ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie ;
+    :temMembro :tomas_wallenstein .
+:capitao_fausto :influenciadoPor :ornatos_violeta .
+
+:kussondulola a :Banda ;
+    :nome "Kussondulola" ;
+    :anoFormacao 1992 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Reggae .
+
+:corvos a :Banda ;
+    :nome "Corvos" ;
+    :anoFormacao 1998 ;
+    :pertenceAEditora :zona_musica ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+
+:the_gift a :Banda ;
+    :nome "The Gift" ;
+    :anoFormacao 1994 ;
+    :pertenceAEditora :transformadores ;
+    :biografia "Banda de pop alternativo de Coimbra, uma das mais internacionais do pop português." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Indie .
+
+:deolinda a :Banda ;
+    :nome "Deolinda" ;
+    :anoFormacao 2006 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Quarteto de Lisboa que mistura fado, folk e pop com letras sociais e poéticas." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Fado ;
+    :pertenceAoGenero :Folk ;
+    :temMembro :ana_bacalhau .
+:deolinda :recebeuPremio :globo_ouro_banda_deolinda .
+:deolinda :atuouEm :deolinda_novas_doc .
+:deolinda :influenciadoPor :madredeus .
+
+:amor_electro a :Banda ;
+    :nome "Amor Electro" ;
+    :anoFormacao 2010 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock ;
+    :temMembro :mariza_liz .
+
+:os_quatro_e_meia a :Banda ;
+    :nome "Os Quatro e Meia" ;
+    :anoFormacao 2013 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop .
+
+:dzrt a :Banda ;
+    :nome "D'ZRT" ;
+    :anoFormacao 2004 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop .
+
+:santamaria a :Banda ;
+    :nome "Santamaria" ;
+    :anoFormacao 1998 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pop .
+
+:davidinho_e_banda a :Banda ;
+    :nome "David Fonseca e Banda" ;
+    :anoFormacao 2000 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock ;
+    :temMembro :david_fonseca .
+
+:wet_bed_gang a :Banda ;
+    :nome "Wet Bed Gang" ;
+    :anoFormacao 2014 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop .
+
+:buraka_som_sistema a :Banda ;
+    :nome "Buraka Som Sistema" ;
+    :anoFormacao 2006 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Coletivo musical de Lisboa que popularizou o kuduro e a música eletrónica africana." ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :Electronica .
+
+:expensive_soul a :Banda ;
+    :nome "Expensive Soul" ;
+    :anoFormacao 1999 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :RB .
+
+:black_company a :Banda ;
+    :nome "Black Company" ;
+    :anoFormacao 1993 ;
+    :pertenceAEditora :edisco ;
+    :pertenceAoGenero :HipHop .
+
+:dealema_banda a :Banda ;
+    :nome "Dealema" ;
+    :anoFormacao 1999 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop ;
+    :temMembro :dealema .
+
+:madredeus a :Banda ;
+    :nome "Madredeus" ;
+    :anoFormacao 1986 ;
+    :pertenceAEditora :universal_pt ;
+    :biografia "Grupo musical português que mistura fado, música medieval e pop, reconhecido internacionalmente." ;
+    :pertenceAoGenero :Folk ;
+    :pertenceAoGenero :Indie ;
+    :pertenceAoGenero :Pop ;
+    :temMembro :teresa_salgueiro ;
+    :temMembro :rodrigo_leao .
+
+:pedro_abrunhosa_banda a :Banda ;
+    :nome "Pedro Abrunhosa e Comité Caviar" ;
+    :anoFormacao 1993 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Projeto musical do compositor portuense Pedro Abrunhosa." ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Jazz ;
+    :pertenceAoGenero :Soul ;
+    :temMembro :pedro_abrunhosa .
+
+:tao_cruz_band a :Banda ;
+    :nome "Silence 4" ;
+    :anoFormacao 1994 ;
+    :pertenceAEditora :sony_pt ;
+    :biografia "Banda de rock alternativo portuense precursora do indie rock português." ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie ;
+    :temMembro :david_fonseca .
+
+
+#################################################################
+#    Álbuns
+#################################################################
+
+:estranha_forma_vida a :Album ;
+    :nome "Estranha Forma de Vida" ;
+    :anoLancamento 1962 ;
+    :pertenceAoGenero :Fado .
+:amalia_rodrigues :lancouAlbum :estranha_forma_vida .
+
+:com_que_voz a :Album ;
+    :nome "Com Que Voz" ;
+    :anoLancamento 1970 ;
+    :pertenceAoGenero :Fado .
+:amalia_rodrigues :lancouAlbum :com_que_voz .
+
+:amalia_71 a :Album ;
+    :nome "Amália 71" ;
+    :anoLancamento 1971 ;
+    :pertenceAoGenero :Fado .
+:amalia_rodrigues :lancouAlbum :amalia_71 .
+
+:fado_em_mim a :Album ;
+    :nome "O Fado" ;
+    :anoLancamento 2001 ;
+    :pertenceAoGenero :Fado .
+:carlos_do_carmo :lancouAlbum :fado_em_mim .
+
+:fado_mae a :Album ;
+    :nome "Fado Mãe" ;
+    :anoLancamento 2008 ;
+    :pertenceAoGenero :Fado .
+:carminho :lancouAlbum :fado_mae .
+
+:mariza_fado_em_mim a :Album ;
+    :nome "Fado em Mim" ;
+    :anoLancamento 2001 ;
+    :pertenceAoGenero :Fado .
+:mariza :lancouAlbum :mariza_fado_em_mim .
+
+:transparente_alb a :Album ;
+    :nome "Transparente" ;
+    :anoLancamento 2005 ;
+    :pertenceAoGenero :Fado .
+:mariza :lancouAlbum :transparente_alb .
+
+:ana_moura_desfado a :Album ;
+    :nome "Desfado" ;
+    :anoLancamento 2012 ;
+    :pertenceAoGenero :Fado .
+:ana_moura :lancouAlbum :ana_moura_desfado .
+
+:katia_longe a :Album ;
+    :nome "Longe" ;
+    :anoLancamento 2003 ;
+    :pertenceAoGenero :Fado .
+:katia_guerreiro :lancouAlbum :katia_longe .
+
+:gisela_gisela a :Album ;
+    :nome "Gisela João" ;
+    :anoLancamento 2013 ;
+    :pertenceAoGenero :Fado .
+:gisela_joao :lancouAlbum :gisela_gisela .
+
+:zambujo_alfama a :Album ;
+    :nome "Alfama" ;
+    :anoLancamento 2011 ;
+    :pertenceAoGenero :Fado ;
+    :pertenceAoGenero :Pop .
+:antonio_zambujo :lancouAlbum :zambujo_alfama .
+
+:ar_de_rock_alb a :Album ;
+    :nome "Ar de Rock" ;
+    :anoLancamento 1980 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Blues .
+:rui_veloso :lancouAlbum :ar_de_rock_alb .
+
+:anjo_da_guarda_alb a :Album ;
+    :nome "Anjo da Guarda" ;
+    :anoLancamento 1983 ;
+    :pertenceAoGenero :Pop .
+:antonio_variacoes :lancouAlbum :anjo_da_guarda_alb .
+
+:cafe_berlin_alb a :Album ;
+    :nome "Café Berlim" ;
+    :anoLancamento 1986 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+:antonio_variacoes :lancouAlbum :cafe_berlin_alb .
+
+:album_1111 a :Album ;
+    :nome "Quarteto 1111" ;
+    :anoLancamento 1970 ;
+    :pertenceAoGenero :Rock .
+:quarteto_1111 :lancouAlbum :album_1111 .
+
+:taxi_81 a :Album ;
+    :nome "Táxi" ;
+    :anoLancamento 1981 ;
+    :pertenceAoGenero :Rock .
+:taxi :lancouAlbum :taxi_81 .
+
+:madrugada_80 a :Album ;
+    :nome "À Flor da Pele" ;
+    :anoLancamento 1981 ;
+    :pertenceAoGenero :Rock .
+:uhf :lancouAlbum :madrugada_80 .
+
+:a_um_deus_alb a :Album ;
+    :nome "A um Deus Desconhecido" ;
+    :anoLancamento 1984 ;
+    :pertenceAoGenero :Pop .
+:setima_legiao :lancouAlbum :a_um_deus_alb .
+
+:ao_vivo_setima a :Album ;
+    :nome "Ao Vivo" ;
+    :anoLancamento 1989 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+:setima_legiao :lancouAlbum :ao_vivo_setima .
+
+:irreligious a :Album ;
+    :nome "Irreligious" ;
+    :anoLancamento 1996 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+:moonspell :lancouAlbum :irreligious .
+
+:wolfheart_alb a :Album ;
+    :nome "Wolfheart" ;
+    :anoLancamento 1995 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+:moonspell :lancouAlbum :wolfheart_alb .
+
+:night_eternal_alb a :Album ;
+    :nome "Night Eternal" ;
+    :anoLancamento 2008 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+:moonspell :lancouAlbum :night_eternal_alb .
+
+:rui_mingo_alb a :Album ;
+    :nome "Guardador de Margens" ;
+    :anoLancamento 1983 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Blues .
+:rui_veloso :lancouAlbum :rui_mingo_alb .
+
+:mutantes_alb a :Album ;
+    :nome "Mutantes S.21" ;
+    :anoLancamento 1992 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+:mao_morta :lancouAlbum :mutantes_alb .
+
+:ganda_banda_alb a :Album ;
+    :nome "Dias de Cumplicidade" ;
+    :anoLancamento 1998 ;
+    :pertenceAoGenero :Rock .
+:quinta_do_bill :lancouAlbum :ganda_banda_alb .
+
+:portem_se_bem_alb a :Album ;
+    :nome "Portem-se Bem" ;
+    :anoLancamento 1989 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+:peste_sida :lancouAlbum :portem_se_bem_alb .
+
+:cancoes_pos_guerra a :Album ;
+    :nome "Canções do Pós-Guerra" ;
+    :anoLancamento 2020 ;
+    :pertenceAoGenero :Rock .
+:jorge_palma :lancouAlbum :cancoes_pos_guerra .
+
+:fragil_alb a :Album ;
+    :nome "Frágil" ;
+    :anoLancamento 1985 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Pop .
+:jorge_palma :lancouAlbum :fragil_alb .
+
+:ornatos_cao a :Album ;
+    :nome "Cão!" ;
+    :anoLancamento 1997 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+:ornatos_violeta :lancouAlbum :ornatos_cao .
+
+:ornatos_monstro a :Album ;
+    :nome "O Monstro Precisa de Amigos" ;
+    :anoLancamento 1999 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+:ornatos_violeta :lancouAlbum :ornatos_monstro .
+
+:xutos_cerco a :Album ;
+    :nome "Cerco" ;
+    :anoLancamento 1985 ;
+    :pertenceAoGenero :Rock .
+:xutos_pontapes :lancouAlbum :xutos_cerco .
+
+:xutos_78_82 a :Album ;
+    :nome "78/82" ;
+    :anoLancamento 1982 ;
+    :pertenceAoGenero :Rock .
+:xutos_pontapes :lancouAlbum :xutos_78_82 .
+
+:herois_mae a :Album ;
+    :nome "Mãe" ;
+    :anoLancamento 1983 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+:herois_do_mar :lancouAlbum :herois_mae .
+
+:madredeus_o_espirito a :Album ;
+    :nome "O Espírito da Paz" ;
+    :anoLancamento 1994 ;
+    :pertenceAoGenero :Folk ;
+    :pertenceAoGenero :Indie .
+:madredeus :lancouAlbum :madredeus_o_espirito .
+
+:madredeus_ainda a :Album ;
+    :nome "Ainda" ;
+    :anoLancamento 1995 ;
+    :pertenceAoGenero :Folk ;
+    :pertenceAoGenero :Indie .
+:madredeus :lancouAlbum :madredeus_ainda .
+
+:capitao_fausto_invencao a :Album ;
+    :nome "A Invenção do Dia Claro" ;
+    :anoLancamento 2019 ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+:capitao_fausto :lancouAlbum :capitao_fausto_invencao .
+
+:barbara_finda_alb a :Album ;
+    :nome "Finda" ;
+    :anoLancamento 2023 ;
+    :pertenceAoGenero :Pop .
+:barbara_bandeira :lancouAlbum :barbara_finda_alb .
+
+:sobral_excuse_me a :Album ;
+    :nome "Excuse Me" ;
+    :anoLancamento 2016 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Jazz .
+:salvador_sobral :lancouAlbum :sobral_excuse_me .
+
+:vinyl_album a :Album ;
+    :nome "Vinyl" ;
+    :anoLancamento 1998 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Indie .
+:the_gift :lancouAlbum :vinyl_album .
+
+:cancao_deolinda a :Album ;
+    :nome "Canção ao Lado" ;
+    :anoLancamento 2008 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Fado .
+:deolinda :lancouAlbum :cancao_deolinda .
+
+:deolinda_dois a :Album ;
+    :nome "Outras Histórias" ;
+    :anoLancamento 2015 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Folk .
+:deolinda :lancouAlbum :deolinda_dois .
+
+:baza_baza_reggae a :Album ;
+    :nome "Janela para o Recreio" ;
+    :anoLancamento 1995 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Reggae .
+:kussondulola :lancouAlbum :baza_baza_reggae .
+
+:dino_santiago_mundu a :Album ;
+    :nome "Mundu Nôbu" ;
+    :anoLancamento 2018 ;
+    :pertenceAoGenero :RB ;
+    :pertenceAoGenero :Kizomba ;
+    :pertenceAoGenero :Pop .
+:dino_d_santiago :lancouAlbum :dino_santiago_mundu .
+
+:black_diamond_alb a :Album ;
+    :nome "Black Diamond" ;
+    :anoLancamento 2008 ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :Electronica .
+:buraka_som_sistema :lancouAlbum :black_diamond_alb .
+
+:sara_balance a :Album ;
+    :nome "Balancê" ;
+    :anoLancamento 2005 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :RB ;
+    :pertenceAoGenero :Soul .
+:sara_tavares :lancouAlbum :sara_balance .
+
+:afro_fado_album a :Album ;
+    :nome "Afro Fado" ;
+    :anoLancamento 2023 ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :Pop .
+:slow_j :lancouAlbum :afro_fado_album .
+
+:servico_publico_alb a :Album ;
+    :nome "Serviço Público" ;
+    :anoLancamento 2006 ;
+    :pertenceAoGenero :HipHop .
+:valete :lancouAlbum :servico_publico_alb .
+
+:valete_educacao_alb a :Album ;
+    :nome "Educação Visual" ;
+    :anoLancamento 2002 ;
+    :pertenceAoGenero :HipHop .
+:valete :lancouAlbum :valete_educacao_alb .
+
+:capicua_sereia a :Album ;
+    :nome "Sereia Louca" ;
+    :anoLancamento 2014 ;
+    :pertenceAoGenero :HipHop .
+:capicua :lancouAlbum :capicua_sereia .
+
+:boss_ac_ritmo a :Album ;
+    :nome "Ritmo, Amor e Palavras" ;
+    :anoLancamento 2005 ;
+    :pertenceAoGenero :HipHop .
+:boss_ac :lancouAlbum :boss_ac_ritmo .
+
+:zeca_bancal_alb a :Album ;
+    :nome "Balada do Outono" ;
+    :anoLancamento 1964 ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+:zeca_afonso :lancouAlbum :zeca_bancal_alb .
+
+:grandola_alb a :Album ;
+    :nome "Cantigas do Maio" ;
+    :anoLancamento 1971 ;
+    :pertenceAoGenero :Intervencao .
+:zeca_afonso :lancouAlbum :grandola_alb .
+
+:sergio_caminhante a :Album ;
+    :nome "Caminhante" ;
+    :anoLancamento 1974 ;
+    :pertenceAoGenero :Intervencao .
+:sergio_godinho :lancouAlbum :sergio_caminhante .
+
+:atento_album a :Album ;
+    :nome "Atento" ;
+    :anoLancamento 2003 ;
+    :pertenceAoGenero :Pimba .
+:quim_barreiros :lancouAlbum :atento_album .
+
+:es_tao_sensual_alb a :Album ;
+    :nome "Chama o António" ;
+    :anoLancamento 1994 ;
+    :pertenceAoGenero :Pimba .
+:toy :lancouAlbum :es_tao_sensual_alb .
+
+:perfume_mulher_alb a :Album ;
+    :nome "Perfume de Mulher" ;
+    :anoLancamento 1996 ;
+    :pertenceAoGenero :Pimba .
+:agata :lancouAlbum :perfume_mulher_alb .
+
+
+#################################################################
+#    Músicas
+#################################################################
+
+:estranha_forma_mus a :Musica ;
+    :nome "Estranha Forma de Vida" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :pertenceAoAlbum :estranha_forma_vida ;
+    :pertenceAoGenero :Fado .
+
+:uma_casa_portuguesa a :Musica ;
+    :nome "Uma Casa Portuguesa" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :pertenceAoGenero :Fado .
+
+:lagrima_mus a :Musica ;
+    :nome "Lágrima" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :pertenceAoAlbum :com_que_voz ;
+    :pertenceAoGenero :Fado .
+
+:povo_que_lavas a :Musica ;
+    :nome "Povo Que Lavas no Rio" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :pertenceAoGenero :Fado .
+
+:barco_negro a :Musica ;
+    :nome "Barco Negro" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :pertenceAoGenero :Fado .
+
+:com_que_voz_mus a :Musica ;
+    :nome "Com Que Voz" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :pertenceAoAlbum :com_que_voz ;
+    :pertenceAoGenero :Fado .
+
+:um_homem_cidade a :Musica ;
+    :nome "Um Homem na Cidade" ;
+    :interpretadaPor :carlos_do_carmo ;
+    :pertenceAoAlbum :fado_em_mim ;
+    :pertenceAoGenero :Fado .
+
+:lisboa_menina_moca a :Musica ;
+    :nome "Lisboa, Menina e Moça" ;
+    :interpretadaPor :carlos_do_carmo ;
+    :pertenceAoGenero :Fado .
+
+:corre_mus a :Musica ;
+    :nome "Corre" ;
+    :interpretadaPor :mariza ;
+    :pertenceAoAlbum :mariza_fado_em_mim ;
+    :pertenceAoGenero :Fado .
+
+:transparente_mus a :Musica ;
+    :nome "Transparente" ;
+    :interpretadaPor :mariza ;
+    :pertenceAoAlbum :transparente_alb ;
+    :pertenceAoGenero :Fado .
+
+:fado_da_saudade_mus a :Musica ;
+    :nome "Fado da Saudade" ;
+    :interpretadaPor :carminho ;
+    :pertenceAoAlbum :fado_mae ;
+    :pertenceAoGenero :Fado .
+
+:desfado_mus a :Musica ;
+    :nome "Desfado" ;
+    :interpretadaPor :ana_moura ;
+    :pertenceAoAlbum :ana_moura_desfado ;
+    :pertenceAoGenero :Fado .
+
+:duende_gisela a :Musica ;
+    :nome "Duende" ;
+    :interpretadaPor :gisela_joao ;
+    :pertenceAoAlbum :gisela_gisela ;
+    :pertenceAoGenero :Fado .
+
+:zambujo_alfama_mus a :Musica ;
+    :nome "Alfama" ;
+    :interpretadaPor :antonio_zambujo ;
+    :pertenceAoAlbum :zambujo_alfama ;
+    :pertenceAoGenero :Fado ;
+    :pertenceAoGenero :Pop .
+
+:pica_do_sete a :Musica ;
+    :nome "O Pica do Sete" ;
+    :interpretadaPor :antonio_zambujo ;
+    :pertenceAoGenero :Fado ;
+    :pertenceAoGenero :Pop .
+
+:grandola_mus a :Musica ;
+    :nome "Grândola, Vila Morena" ;
+    :interpretadaPor :zeca_afonso ;
+    :pertenceAoAlbum :grandola_alb ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+
+:vejam_bem_mus a :Musica ;
+    :nome "Vejam Bem" ;
+    :interpretadaPor :zeca_afonso ;
+    :pertenceAoGenero :Intervencao .
+
+:menino_bairro_negro a :Musica ;
+    :nome "Menino do Bairro Negro" ;
+    :interpretadaPor :zeca_afonso ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+
+:traz_outro_amigo a :Musica ;
+    :nome "Traz Outro Amigo Também" ;
+    :interpretadaPor :zeca_afonso ;
+    :pertenceAoAlbum :zeca_bancal_alb ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+
+:primeiro_dia_mus a :Musica ;
+    :nome "Primeiro Dia" ;
+    :interpretadaPor :sergio_godinho ;
+    :pertenceAoAlbum :sergio_caminhante ;
+    :pertenceAoGenero :Intervencao .
+
+:carvalhesa_mus a :Musica ;
+    :nome "A Carvalhesa" ;
+    :interpretadaPor :adriano_correia ;
+    :pertenceAoGenero :Intervencao .
+
+:pintassilgo_mus a :Musica ;
+    :nome "Como um Pintassilgo" ;
+    :interpretadaPor :zeca_afonso ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Folk .
+
+:cancao_engate a :Musica ;
+    :nome "Canção de Engate" ;
+    :interpretadaPor :antonio_variacoes ;
+    :pertenceAoAlbum :anjo_da_guarda_alb ;
+    :pertenceAoGenero :Pop .
+
+:estou_alem_mus a :Musica ;
+    :nome "Estou Além" ;
+    :interpretadaPor :antonio_variacoes ;
+    :pertenceAoAlbum :cafe_berlin_alb ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:corpo_e_que_paga_mus a :Musica ;
+    :nome "O Corpo É Que Paga" ;
+    :interpretadaPor :antonio_variacoes ;
+    :pertenceAoGenero :Pop .
+
+:porto_sentido_mus a :Musica ;
+    :nome "Porto Sentido" ;
+    :interpretadaPor :rui_veloso ;
+    :pertenceAoAlbum :ar_de_rock_alb ;
+    :pertenceAoGenero :Rock .
+
+:chico_fininho_mus a :Musica ;
+    :nome "Chico Fininho" ;
+    :interpretadaPor :rui_veloso ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Blues .
+
+:fragil_mus a :Musica ;
+    :nome "Frágil" ;
+    :interpretadaPor :jorge_palma ;
+    :pertenceAoAlbum :fragil_alb ;
+    :pertenceAoGenero :Rock .
+
+:aprender_voar_mus a :Musica ;
+    :nome "Aprender a Voar" ;
+    :interpretadaPor :jorge_palma ;
+    :pertenceAoAlbum :cancoes_pos_guerra ;
+    :pertenceAoGenero :Rock .
+
+:depois_adeus_mus a :Musica ;
+    :nome "E Depois do Adeus" ;
+    :interpretadaPor :paulo_de_carvalho ;
+    :pertenceAoGenero :Pop .
+
+:playback_mus a :Musica ;
+    :nome "Playback" ;
+    :interpretadaPor :carlos_paiao ;
+    :pertenceAoGenero :Pop .
+
+:cinderela_mus a :Musica ;
+    :nome "Cinderela" ;
+    :interpretadaPor :carlos_paiao ;
+    :pertenceAoGenero :Pop .
+
+:contentores_mus a :Musica ;
+    :nome "Contentores" ;
+    :interpretadaPor :xutos_pontapes ;
+    :pertenceAoAlbum :xutos_cerco ;
+    :pertenceAoGenero :Rock .
+
+:nao_sou_unico_mus a :Musica ;
+    :nome "Não Sou o Único" ;
+    :interpretadaPor :xutos_pontapes ;
+    :pertenceAoAlbum :xutos_cerco ;
+    :pertenceAoGenero :Rock .
+
+:chuva_dissolvente_mus a :Musica ;
+    :nome "Chuva Dissolvente" ;
+    :interpretadaPor :xutos_pontapes ;
+    :pertenceAoGenero :Rock .
+
+:deus_desconhecido_mus a :Musica ;
+    :nome "A um Deus Desconhecido" ;
+    :interpretadaPor :setima_legiao ;
+    :pertenceAoAlbum :a_um_deus_alb ;
+    :pertenceAoGenero :Pop .
+
+:sete_mares_mus a :Musica ;
+    :nome "Sete Mares" ;
+    :interpretadaPor :setima_legiao ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:opium_mus a :Musica ;
+    :nome "Opium" ;
+    :interpretadaPor :moonspell ;
+    :pertenceAoAlbum :irreligious ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+
+:wolfheart_mus a :Musica ;
+    :nome "Wolfheart" ;
+    :interpretadaPor :moonspell ;
+    :pertenceAoAlbum :wolfheart_alb ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+
+:night_eternal_mus a :Musica ;
+    :nome "Night Eternal" ;
+    :interpretadaPor :moonspell ;
+    :pertenceAoAlbum :night_eternal_alb ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Metal .
+
+:ouvi_dizer_mus a :Musica ;
+    :nome "Ouvi Dizer" ;
+    :interpretadaPor :ornatos_violeta ;
+    :pertenceAoAlbum :ornatos_monstro ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:punk_macaco_mus a :Musica ;
+    :nome "Punk Macaco" ;
+    :interpretadaPor :ornatos_violeta ;
+    :pertenceAoAlbum :ornatos_cao ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:capitao_romance_mus a :Musica ;
+    :nome "Capitão Romance" ;
+    :interpretadaPor :ornatos_violeta ;
+    :pertenceAoAlbum :ornatos_monstro ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:chiclete_mus a :Musica ;
+    :nome "Chiclete" ;
+    :interpretadaPor :taxi ;
+    :pertenceAoAlbum :taxi_81 ;
+    :pertenceAoGenero :Rock .
+
+:cavalo_corrida_mus a :Musica ;
+    :nome "Cavalo de Corrida" ;
+    :interpretadaPor :uhf ;
+    :pertenceAoAlbum :madrugada_80 ;
+    :pertenceAoGenero :Rock .
+
+:lenda_elrei_mus a :Musica ;
+    :nome "Lenda de El-Rei D. Sebastião" ;
+    :interpretadaPor :quarteto_1111 ;
+    :pertenceAoAlbum :album_1111 ;
+    :pertenceAoGenero :Rock .
+
+:paixao_mus a :Musica ;
+    :nome "Paixão" ;
+    :interpretadaPor :herois_do_mar ;
+    :pertenceAoAlbum :herois_mae ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:o_pastor_mus a :Musica ;
+    :nome "O Pastor" ;
+    :interpretadaPor :madredeus ;
+    :pertenceAoAlbum :madredeus_ainda ;
+    :pertenceAoGenero :Folk ;
+    :pertenceAoGenero :Indie .
+
+:o_mar_mus a :Musica ;
+    :nome "O Mar" ;
+    :interpretadaPor :madredeus ;
+    :pertenceAoAlbum :madredeus_o_espirito ;
+    :pertenceAoGenero :Folk ;
+    :pertenceAoGenero :Indie .
+
+:parva_que_sou_mus a :Musica ;
+    :nome "Parva que Sou" ;
+    :interpretadaPor :deolinda ;
+    :pertenceAoAlbum :cancao_deolinda ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Fado .
+
+:a_estranheza_mus a :Musica ;
+    :nome "A Estranheza" ;
+    :interpretadaPor :deolinda ;
+    :pertenceAoAlbum :deolinda_dois ;
+    :pertenceAoGenero :Pop .
+
+:driving_slow_mus a :Musica ;
+    :nome "Driving You Slow" ;
+    :interpretadaPor :the_gift ;
+    :pertenceAoAlbum :vinyl_album ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Indie .
+
+:amar_pelos_dois_mus a :Musica ;
+    :nome "Amar Pelos Dois" ;
+    :interpretadaPor :salvador_sobral ;
+    :compostaPor :luisa_sobral ;
+    :pertenceAoAlbum :sobral_excuse_me ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Jazz .
+:amar_pelos_dois_mus :temColaboracao :luisa_sobral .
+
+:como_tu_mus a :Musica ;
+    :nome "Como Tu (feat. Ivandro)" ;
+    :interpretadaPor :barbara_bandeira ;
+    :interpretadaPor :ivandro ;
+    :pertenceAoAlbum :barbara_finda_alb ;
+    :pertenceAoGenero :Pop .
+:como_tu_mus :temColaboracao :ivandro .
+
+:nos_os_dois_mus a :Musica ;
+    :nome "Nós os Dois" ;
+    :interpretadaPor :barbara_bandeira ;
+    :pertenceAoGenero :Pop .
+
+:balance_mus a :Musica ;
+    :nome "Balancê" ;
+    :interpretadaPor :sara_tavares ;
+    :pertenceAoAlbum :sara_balance ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :RB ;
+    :pertenceAoGenero :Soul .
+
+:where_heart_is_mus a :Musica ;
+    :nome "Where x Heart Is" ;
+    :interpretadaPor :slow_j ;
+    :pertenceAoAlbum :afro_fado_album ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :Pop .
+
+:roleta_russa_mus a :Musica ;
+    :nome "Roleta Russa" ;
+    :interpretadaPor :valete ;
+    :pertenceAoAlbum :servico_publico_alb ;
+    :pertenceAoGenero :HipHop .
+
+:nossos_tempos_mus a :Musica ;
+    :nome "Nossos Tempos" ;
+    :interpretadaPor :valete ;
+    :pertenceAoAlbum :valete_educacao_alb ;
+    :pertenceAoGenero :HipHop .
+
+:vayorken_mus a :Musica ;
+    :nome "Vayorken" ;
+    :interpretadaPor :capicua ;
+    :pertenceAoAlbum :capicua_sereia ;
+    :pertenceAoGenero :HipHop .
+
+:kalemba_mus a :Musica ;
+    :nome "Kalemba (Wegue Wegue)" ;
+    :interpretadaPor :buraka_som_sistema ;
+    :pertenceAoAlbum :black_diamond_alb ;
+    :pertenceAoGenero :HipHop ;
+    :pertenceAoGenero :Electronica .
+
+:princesa_mus a :Musica ;
+    :nome "Princesa (Beija-me Outra Vez)" ;
+    :interpretadaPor :boss_ac ;
+    :pertenceAoAlbum :boss_ac_ritmo ;
+    :pertenceAoGenero :HipHop .
+
+:danca_reggae_mus a :Musica ;
+    :nome "Dança Reggae" ;
+    :interpretadaPor :kussondulola ;
+    :pertenceAoAlbum :baza_baza_reggae ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Reggae .
+
+:garagem_vizinha_mus a :Musica ;
+    :nome "A Garagem da Vizinha" ;
+    :interpretadaPor :quim_barreiros ;
+    :pertenceAoAlbum :atento_album ;
+    :pertenceAoGenero :Pimba .
+
+:mestre_culinario_mus a :Musica ;
+    :nome "O Mestre de Culinária" ;
+    :interpretadaPor :quim_barreiros ;
+    :pertenceAoGenero :Pimba .
+
+:chama_antonio_mus a :Musica ;
+    :nome "Chama o António" ;
+    :interpretadaPor :toy ;
+    :pertenceAoAlbum :es_tao_sensual_alb ;
+    :pertenceAoGenero :Pimba .
+
+:perfume_mulher_mus a :Musica ;
+    :nome "Perfume de Mulher" ;
+    :interpretadaPor :agata ;
+    :pertenceAoAlbum :perfume_mulher_alb ;
+    :pertenceAoGenero :Pimba .
+
+:subtilezas_mus a :Musica ;
+    :nome "Subtilezas de um Rapaz de Bairro" ;
+    :interpretadaPor :rui_veloso ;
+    :pertenceAoAlbum :rui_mingo_alb ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:filhos_nacao_mus a :Musica ;
+    :nome "Os Filhos da Nação" ;
+    :interpretadaPor :quinta_do_bill ;
+    :pertenceAoAlbum :ganda_banda_alb ;
+    :pertenceAoGenero :Rock .
+
+:sol_caparica_mus a :Musica ;
+    :nome "Sol da Caparica" ;
+    :interpretadaPor :peste_sida ;
+    :pertenceAoAlbum :portem_se_bem_alb ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:boa_memoria_mus a :Musica ;
+    :nome "Boa Memória" ;
+    :interpretadaPor :capitao_fausto ;
+    :pertenceAoAlbum :capitao_fausto_invencao ;
+    :pertenceAoGenero :Rock ;
+    :pertenceAoGenero :Indie .
+
+:dino_mundu_mus a :Musica ;
+    :nome "Mundu Nôbu" ;
+    :interpretadaPor :dino_d_santiago ;
+    :pertenceAoAlbum :dino_santiago_mundu ;
+    :pertenceAoGenero :RB ;
+    :pertenceAoGenero :Kizomba ;
+    :pertenceAoGenero :Pop .
+

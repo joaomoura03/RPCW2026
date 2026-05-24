@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concertos — Arquivo da Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .concertos-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .concerto-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .concerto-row:hover {
+      border-color: var(--gold);
+      border-left-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .concerto-icon {
+      font-size: 1.6rem;
+      background: rgba(155, 35, 53, 0.1);
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(155, 35, 53, 0.2);
+      flex-shrink: 0;
+    }
+    .concerto-content { flex: 1; }
+    .concerto-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--cream);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .concerto-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .concerto-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .concerto-artistas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.3rem;
+    }
+    .artista-chip-c {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      transition: border-color 0.2s;
+    }
+    .artista-chip-c:hover { border-color: var(--gold); color: var(--gold-light); }
+    .concerto-date {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      text-align: right;
+      min-width: 110px;
+    }
+    .flash-success {
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      color: #4ade80;
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .flash-error {
+      background: rgba(155, 35, 53, 0.1);
+      border: 1px solid rgba(155, 35, 53, 0.3);
+      color: #ff5268;
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link active"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="page-hero">
+      <h1>Atuações <em>Históricas</em></h1>
+      <hr class="hero-rule">
+      <p>Concertos e atuações memoráveis dos artistas portugueses.</p>
+    </div>
+
+    <!-- ══ FORMULÁRIO ADICIONAR CONCERTO ══ -->
+    <div class="section-divider"><span><i class="fa-solid fa-plus"></i> Registar Nova Atuação</span></div>
+    <div class="filter-box" style="background: var(--surface2); padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+      <form method="POST" action="/concerto/adicionar" style="width: 100%;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+
+          <div class="form-group">
+            <label>Nome do Concerto / Atuação *</label>
+            <input type="text" name="nome" placeholder="Ex: Rock in Rio Lisboa 2024" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Local / Recinto</label>
+            <input type="text" name="local" placeholder="Ex: Parque da Bela Vista" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Data (AAAA-MM-DD)</label>
+            <input type="date" name="data" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Artista / Banda</label>
+            <select name="artista_id" class="form-control">
+              <option value="">— Sem artista associado —</option>
+              {% for a in artistas %}
+                <option value="{{ a.id }}">{{ a.nome }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+        </div>
+        <div style="text-align: right;">
+          <button type="submit" class="btn btn-primary" style="font-weight: bold;">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Registar Concerto
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ══ LISTAGEM ══ -->
+    <div class="section-divider">
+      <span>{{ concertos|length }} concerto{% if concertos|length != 1 %}s{% endif %} registado{% if concertos|length != 1 %}s{% endif %}</span>
+    </div>
+
+    {% if concertos %}
+    <div class="concertos-list">
+      {% for c in concertos %}
+      <div class="concerto-row">
+        <div class="concerto-icon">
+          <i class="fa-solid fa-microphone-lines" style="color: var(--red);"></i>
+        </div>
+        <div class="concerto-content">
+          <div class="concerto-title">{{ c.nome }}</div>
+          <div class="concerto-meta">
+            {% if c.local %}
+              <span><i class="fa-solid fa-location-dot"></i> {{ c.local }}</span>
+            {% endif %}
+          </div>
+          {% if c.artistas %}
+          <div class="concerto-artistas">
+            {% for a in c.artistas %}
+              <a href="/artista/{{ a.id }}" class="artista-chip-c">
+                <i class="fa-solid fa-user" style="font-size: 0.7rem;"></i> {{ a.nome }}
+              </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% if c.data %}
+          <div class="concerto-date">{{ c.data }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <div class="icon">🎤</div>
+      <p style="color: var(--muted);">Nenhum concerto registado na base de conhecimento.</p>
+    </div>
+    {% endif %}
+
+    <div style="margin-top:3rem; text-align:center;">
+      <a href="/" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao Catálogo</a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "editoras": [
+    {
+      "id": "valentim_de_carvalho",
+      "nome": "Valentim de Carvalho"
+    },
+    {
+      "id": "edisco",
+      "nome": "Edisco"
+    },
+    {
+      "id": "emi_portugal",
+      "nome": "EMI Portugal"
+    },
+    {
+      "id": "universal_pt",
+      "nome": "Universal Music Portugal"
+    },
+    {
+      "id": "sony_pt",
+      "nome": "Sony Music Portugal"
+    },
+    {
+      "id": "transformadores",
+      "nome": "Transformadores Discos"
+    },
+    {
+      "id": "edicoes_orfeu",
+      "nome": "Edições Orfeu"
+    },
+    {
+      "id": "ovacao",
+      "nome": "Ovação Records"
+    },
+    {
+      "id": "polygram",
+      "nome": "PolyGram Portugal"
+    },
+    {
+      "id": "zona_musica",
+      "nome": "Zona Música"
+    }
+  ]
+}

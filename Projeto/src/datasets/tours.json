@@ -1,0 +1,28 @@
+{
+  "tours": [
+    {
+      "id": "mariza_world_2005",
+      "nome": "Mariza World Tour 2005",
+      "artista": "mariza",
+      "concertos": [
+        "mariza_coliseu_2004"
+      ]
+    },
+    {
+      "id": "sobral_tour_2017",
+      "nome": "Amar Pelos Dois — European Tour",
+      "artista": "salvador_sobral",
+      "concertos": [
+        "sobral_eurovisao_2017"
+      ]
+    },
+    {
+      "id": "moonspell_tour_2006",
+      "nome": "Memorial Tour 2006",
+      "artista": "moonspell",
+      "concertos": [
+        "moonspell_rock_in_rio"
+      ]
+    }
+  ]
+}

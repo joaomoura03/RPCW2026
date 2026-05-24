@@ -1,0 +1,54 @@
+{
+  "colaboracoes": [
+    {
+      "artista1": "barbara_bandeira",
+      "artista2": "ivandro",
+      "musica": "como_tu_mus"
+    },
+    {
+      "artista1": "salvador_sobral",
+      "artista2": "luisa_sobral",
+      "musica": "amar_pelos_dois_mus"
+    },
+    {
+      "artista1": "ana_moura",
+      "artista2": "antonio_zambujo",
+      "nota": "Colaboração em digressão conjunta 2014"
+    },
+    {
+      "artista1": "slow_j",
+      "artista2": "capicua",
+      "nota": "Colaboração em faixa de Afro Fado"
+    },
+    {
+      "artista1": "deolinda",
+      "artista2": "carminho",
+      "nota": "Concerto conjunto no Coliseu 2012"
+    },
+    {
+      "artista1": "buraka_som_sistema",
+      "artista2": "dino_d_santiago",
+      "nota": "Colaboração em Black Diamond"
+    },
+    {
+      "artista1": "rodrigo_leao",
+      "artista2": "teresa_salgueiro",
+      "nota": "Membros dos Madredeus"
+    },
+    {
+      "artista1": "manel_cruz",
+      "artista2": "ornatos_violeta",
+      "nota": "Manel Cruz foi vocalista dos Ornatos Violeta"
+    },
+    {
+      "artista1": "rui_veloso",
+      "artista2": "jorge_palma",
+      "nota": "Concertos conjuntos ao longo dos anos 80-90"
+    },
+    {
+      "artista1": "mariza",
+      "artista2": "ana_moura",
+      "nota": "Representantes do fado da nova geração"
+    }
+  ]
+}

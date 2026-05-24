@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conexões Semânticas — Arquivo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link active"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="page-hero">
+      <h1>Conexões e <em>Influências</em></h1>
+      <hr class="hero-rule">
+      <p>Explore as linhagens de influência e os encontros colaborativos gravados no catálogo.</p>
+    </div>
+
+    <div class="section-divider"><span>Linhagem Transitiva de Influências</span></div>
+    <div class="influencias-grid">
+      {% for inf in influencias %}
+      <div class="conexao-card">
+        <a href="/artista/{{ inf.source }}" class="badge-link artista-pai">{{ inf.sourceNome }}</a>
+        <div class="seta-conexao">
+          <span class="texto-seta">influenciou</span>
+          <div class="line-arrow"></div>
+        </div>
+        <a href="/artista/{{ inf.target }}" class="badge-link artista-filho">{{ inf.targetNome }}</a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="section-divider" style="margin-top: 4rem;"><span>Participações Especiais (Feats)</span></div>
+    <table class="artist-table">
+      <thead>
+        <tr>
+          <th>Música</th>
+          <th>Artista Principal</th>
+          <th>Participação de</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for feat in feats %}
+        <tr>
+          <td><strong>{{ feat.musica }}</strong></td>
+          <td><a href="/artista/{{ feat.artistaId }}" style="color:var(--gold-light); text-decoration:none;">{{ feat.artista }}</a></td>
+          <td><span class="badge badge-solo">{{ feat.feat }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erro {{ codigo }} — Arquivo da Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div style="text-align:center; padding:5rem 2rem;">
+      <div style="font-family:'Playfair Display', serif; font-size:8rem; font-weight:900; color:var(--gold); line-height:1; margin-bottom:1rem;">
+        {{ codigo }}
+      </div>
+      <div style="font-size:1.4rem; color:var(--cream); margin-bottom:2rem;">
+        {{ mensagem }}
+      </div>
+      <p style="color:var(--muted); margin-bottom:2.5rem; max-width:500px; margin-left:auto; margin-right:auto;">
+        {% if codigo == 404 %}
+          O recurso que estavas a tentar consultar não foi encontrado no arquivo.
+        {% elif codigo == 500 %}
+          Algo correu mal do lado do servidor. Verifica se o GraphDB está a correr na porta 7200 e tenta recarregar a página.
+        {% else %}
+          Ocorreu um erro inesperado.
+        {% endif %}
+      </p>
+      <a href="/" class="btn btn-primary"><i class="fa-solid fa-house"></i> Voltar à página inicial</a>
+    </div>
+  </main>
+
+</body>
+</html>
